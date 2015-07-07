@@ -12,6 +12,8 @@
 /// <reference path="objects/island.ts" />
 /// <reference path="objects/cloud.ts" />
 
+/// <reference path="managers/collision.ts" />
+
 // Game Framework Variables
 var canvas = document.getElementById("canvas");
 var stage: createjs.Stage;
@@ -33,6 +35,9 @@ var ocean: objects.Ocean;
 var plane: objects.Plane;
 var island: objects.Island;
 var clouds: objects.Cloud[] = [];  
+
+// Game Managers
+var collision: managers.Collision;
 
 // Preloader Function
 function preload() {
@@ -79,32 +84,12 @@ function gameLoop() {
     island.update();
     for (var cloud = 0; cloud < 3; cloud++) {
         clouds[cloud].update();
-        checkCollision(clouds[cloud]);
+        collision.check(clouds[cloud]);
     }
-    checkCollision(island);
+    collision.check(island);
     stage.update();
 
     stats.end(); // end measuring
-}
-
-// Check the distance between plane and gameObject
-function checkCollision(gameObject: objects.GameObject) {
-    var p1: createjs.Point = new createjs.Point;
-    var p2: createjs.Point = new createjs.Point;
-    p1.x = plane.x;
-    p1.y = plane.y;
-    p2.x = gameObject.x;
-    p2.y = gameObject.y;
-    if (utility.distance(p1, p2) < ((plane.height) * 0.5 + (gameObject.height * 0.5))) {
-        if (!gameObject.isColliding) {
-            //console.log("Collision!");
-            createjs.Sound.play(gameObject.sound);
-        }
-        gameObject.isColliding = true;
-    }
-    else {
-        gameObject.isColliding = false;
-    }
 }
 
 // Our Main Game Function
@@ -123,4 +108,6 @@ function main() {
         clouds[cloud] = new objects.Cloud(assets.getResult("cloud"));
         stage.addChild(clouds[cloud]);
     }
+    // add collision manager
+    collision = new managers.Collision;
 }
