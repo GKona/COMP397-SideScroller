@@ -4,6 +4,8 @@
 /// <reference path="typings/soundjs/soundjs.d.ts" />
 /// <reference path="typings/preloadjs/preloadjs.d.ts" />
 
+/// <reference path="utility/utility.ts" />
+
 /// <reference path="objects/gameobject.ts" />
 /// <reference path="objects/ocean.ts" />
 /// <reference path="objects/plane.ts" />
@@ -85,11 +87,6 @@ function gameLoop() {
     stats.end(); // end measuring
 }
 
-// Distance utility function
-function distance(p1: createjs.Point, p2: createjs.Point): number {
-    return Math.floor(Math.sqrt(Math.pow((p2.x - p1.x), 2) + Math.pow((p2.y - p1.y), 2)));
-}
-
 // Check the distance between plane and gameObject
 function checkCollision(gameObject: objects.GameObject) {
     var p1: createjs.Point = new createjs.Point;
@@ -98,7 +95,7 @@ function checkCollision(gameObject: objects.GameObject) {
     p1.y = plane.y;
     p2.x = gameObject.x;
     p2.y = gameObject.y;
-    if (distance(p1, p2) < ((plane.height) * 0.5 + (gameObject.height * 0.5))) {
+    if (utility.distance(p1, p2) < ((plane.height) * 0.5 + (gameObject.height * 0.5))) {
         if (!gameObject.isColliding) {
             //console.log("Collision!");
             createjs.Sound.play(gameObject.sound);
