@@ -4,6 +4,7 @@
 /// <reference path="typings/soundjs/soundjs.d.ts" />
 /// <reference path="typings/preloadjs/preloadjs.d.ts" />
 
+/// <reference path="objects/gameobject.ts" />
 /// <reference path="objects/ocean.ts" />
 /// <reference path="objects/plane.ts" />
 /// <reference path="objects/island.ts" />
@@ -19,7 +20,10 @@ var manifest = [
     { id: "ocean", src: "assets/images/ocean.gif" },
     { id: "plane", src: "assets/images/plane.png" },
     { id: "island", src: "assets/images/island.png" },
-    { id: "cloud", src: "assets/images/cloud.png" }
+    { id: "cloud", src: "assets/images/cloud.png" },
+    { id: "yay", src: "assets/audio/yay.ogg" },
+    { id: "thunder", src: "assets/audio/thunder.ogg" },
+    { id: "engine", src: "assets/audio/engine.ogg" }
 ];
 
 // Game Variables
@@ -73,7 +77,9 @@ function gameLoop() {
     island.update();
     for (var cloud = 0; cloud < 3; cloud++) {
         clouds[cloud].update();
+        checkCollision(clouds[cloud]);
     }
+    checkCollision(island);
     stage.update();
 
     stats.end(); // end measuring
@@ -82,6 +88,26 @@ function gameLoop() {
 // Distance utility function
 function distance(p1: createjs.Point, p2: createjs.Point): number {
     return Math.floor(Math.sqrt(Math.pow((p2.x - p1.x), 2) + Math.pow((p2.y - p1.y), 2)));
+}
+
+// Check the distance between plane and gameObject
+function checkCollision(gameObject: objects.GameObject) {
+    var p1: createjs.Point = new createjs.Point;
+    var p2: createjs.Point = new createjs.Point;
+    p1.x = plane.x;
+    p1.y = plane.y;
+    p2.x = gameObject.x;
+    p2.y = gameObject.y;
+    if (distance(p1, p2) < ((plane.height) * 0.5 + (gameObject.height * 0.5))) {
+        if (!gameObject.isColliding) {
+            //console.log("Collision!");
+            createjs.Sound.play(gameObject.sound);
+        }
+        gameObject.isColliding = true;
+    }
+    else {
+        gameObject.isColliding = false;
+    }
 }
 
 // Our Main Game Function

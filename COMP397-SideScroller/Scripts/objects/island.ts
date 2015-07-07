@@ -1,17 +1,11 @@
 ﻿module objects {
     // Island Class + + + + +
-    export class Island extends createjs.Bitmap {
-        // Public Properties + + + + +
-        width: number;
-        height: number;
-        dy: number = 5;
+    export class Island extends objects.GameObject {
         // Constructor + + + + +
         constructor(imageString: string) {
             super(imageString);
-            this.width = this.getBounds().width;
-            this.height = this.getBounds().height;
-            this.regX = this.width * 0.5;
-            this.regY = this.height * 0.5;
+            this.sound = "yay";
+            this.dy = 5;
             this.reset();
         }
         // Private Methods + + + + +

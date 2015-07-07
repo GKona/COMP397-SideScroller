@@ -1,17 +1,10 @@
 ﻿module objects {
     // Plane Class + + + + +
-    export class Plane extends createjs.Bitmap {
-        // Public Properties + + + + +
-        width: number;
-        height: number;
+    export class Plane extends objects.GameObject {
         // Constructor + + + + +
         constructor(imageString: string) {
             super(imageString); 
-            this.width = this.getBounds().width;
-            this.height = this.getBounds().height;
-            this.regX = this.width * 0.5;
-            this.regY = this.height * 0.5;
-
+            this.sound = "engine";
             this.y = 430;
         }
         // Public Methods + + + + +
