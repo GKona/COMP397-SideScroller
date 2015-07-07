@@ -3,6 +3,8 @@
 /// <reference path="typings/tweenjs/tweenjs.d.ts" />
 /// <reference path="typings/soundjs/soundjs.d.ts" />
 /// <reference path="typings/preloadjs/preloadjs.d.ts" />
+
+/// <reference path="objects/ocean.ts" />
 /// <reference path="objects/plane.ts" />
 /// <reference path="objects/island.ts" />
 /// <reference path="objects/cloud.ts" />
@@ -14,12 +16,14 @@ var stats: Stats;
 
 var assets: createjs.LoadQueue;
 var manifest = [
+    { id: "ocean", src: "assets/images/ocean.gif" },
     { id: "plane", src: "assets/images/plane.png" },
     { id: "island", src: "assets/images/island.png" },
     { id: "cloud", src: "assets/images/cloud.png" }
 ];
 
 // Game Variables
+var ocean: objects.Ocean;
 var plane: objects.Plane;
 var island: objects.Island;
 var clouds: objects.Cloud[] = [];  
@@ -64,6 +68,7 @@ function setupStats() {
 // Callback function that creates our Main Game Loop - refreshed 60 fps
 function gameLoop() {
     stats.begin(); // Begin measuring
+    ocean.update();
     plane.update();
     island.update();
     for (var cloud = 0; cloud < 3; cloud++) {
@@ -74,16 +79,16 @@ function gameLoop() {
     stats.end(); // end measuring
 }
 
-// Callback function that allows me to respond to button click events
-function pinkButtonClicked(event: createjs.MouseEvent) {
-    createjs.Sound.play("clicked");
+// Distance utility function
+function distance(p1: createjs.Point, p2: createjs.Point): number {
+    return Math.floor(Math.sqrt(Math.pow((p2.x - p1.x), 2) + Math.pow((p2.y - p1.y), 2)));
 }
-
-// Callback functions that change the alpha transparency of the button
-
 
 // Our Main Game Function
 function main() {
+    // Add ocean object to stage
+    ocean = new objects.Ocean(assets.getResult("ocean"));
+    stage.addChild(ocean);
     // Add island object to stage
     island = new objects.Island(assets.getResult("island"));
     stage.addChild(island);
