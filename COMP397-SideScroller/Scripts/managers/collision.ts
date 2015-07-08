@@ -16,6 +16,12 @@
                 if (!gameObject.isColliding) {
                     //console.log("Collision!");
                     createjs.Sound.play(gameObject.sound);
+                    if (gameObject.name == "cloud") {
+                        scoreboard.lives--;
+                    }
+                    if (gameObject.name == "island") {
+                        scoreboard.score += 100;
+                    }
                 }
                 gameObject.isColliding = true;
             }

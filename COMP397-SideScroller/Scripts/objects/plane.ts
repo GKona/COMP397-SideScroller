@@ -6,6 +6,7 @@
             super(imageString); 
             this.sound = "engine";
             this.y = 430;
+            createjs.Sound.play(this.sound, { "loop": -1 });
         }
         // Public Methods + + + + +
         public update(): void {

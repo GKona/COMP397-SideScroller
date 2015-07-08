@@ -11,6 +11,7 @@
 /// <reference path="objects/plane.ts" />
 /// <reference path="objects/island.ts" />
 /// <reference path="objects/cloud.ts" />
+/// <reference path="objects/scoreboard.ts" />
 
 /// <reference path="managers/collision.ts" />
 
@@ -35,6 +36,7 @@ var ocean: objects.Ocean;
 var plane: objects.Plane;
 var island: objects.Island;
 var clouds: objects.Cloud[] = [];  
+var scoreboard: objects.ScoreBoard;
 
 // Game Managers
 var collision: managers.Collision;
@@ -87,6 +89,7 @@ function gameLoop() {
         collision.check(clouds[cloud]);
     }
     collision.check(island);
+    scoreboard.update();
     stage.update();
 
     stats.end(); // end measuring
@@ -108,6 +111,8 @@ function main() {
         clouds[cloud] = new objects.Cloud(assets.getResult("cloud"));
         stage.addChild(clouds[cloud]);
     }
+    // add scoreboard
+    scoreboard = new objects.ScoreBoard;
     // add collision manager
     collision = new managers.Collision;
 }

@@ -4,6 +4,7 @@
         // Constructor + + + + +
         constructor(imageString: string) {
             super(imageString);
+            this.name = "cloud";
             this.sound = "thunder";
             this.reset();
         }
