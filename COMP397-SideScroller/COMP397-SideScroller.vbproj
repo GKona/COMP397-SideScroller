@@ -86,6 +86,7 @@
     <Content Include="assets\audio\engine.ogg" />
     <Content Include="assets\audio\thunder.ogg" />
     <Content Include="assets\audio\yay.ogg" />
+    <Content Include="assets\images\atlas.png" />
     <Content Include="assets\images\cloud.png" />
     <Content Include="assets\images\island.png" />
     <Content Include="assets\images\ocean.gif" />
@@ -129,6 +130,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\images\atlas.json" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
