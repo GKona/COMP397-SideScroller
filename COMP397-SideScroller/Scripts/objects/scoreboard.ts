@@ -10,8 +10,8 @@
             this.livesLabel = new createjs.Text("Lives:", "40px Consolas", "#FFFF00")
             this.scoreLabel = new createjs.Text("Score:", "40px Consolas", "#FFFF00")
             this.scoreLabel.x = 350;
-            stage.addChild(this.livesLabel);
-            stage.addChild(this.scoreLabel);
+            game.addChild(this.livesLabel);
+            game.addChild(this.scoreLabel);
         }
         // Public Methods + + + + +
         public update() {
