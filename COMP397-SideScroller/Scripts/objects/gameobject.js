@@ -11,7 +11,7 @@ var objects;
         __extends(GameObject, _super);
         // Constructor + + + + +
         function GameObject(imageString) {
-            _super.call(this, atlas, imageString);
+            _super.call(this, assets.atlas, imageString);
             this.isColliding = false;
             this.sound = "";
             this.name = "";

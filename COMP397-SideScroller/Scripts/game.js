@@ -4,6 +4,7 @@
 /// <reference path="typings/soundjs/soundjs.d.ts" />
 /// <reference path="typings/preloadjs/preloadjs.d.ts" />
 /// <reference path="utility/utility.ts" />
+/// <reference path="managers/assets.ts" />
 /// <reference path="objects/gameobject.ts" />
 /// <reference path="objects/ocean.ts" />
 /// <reference path="objects/plane.ts" />
@@ -15,29 +16,6 @@
 var canvas = document.getElementById("canvas");
 var stage;
 var stats;
-var assets;
-var atlas;
-var manifest = [
-    { id: "ocean", src: "assets/images/ocean.gif" },
-    { id: "yay", src: "assets/audio/yay.ogg" },
-    { id: "thunder", src: "assets/audio/thunder.ogg" },
-    { id: "engine", src: "assets/audio/engine.ogg" }
-];
-var data = {
-    "images": [
-        "assets/images/atlas.png"
-    ],
-    "frames": [
-        [2, 2, 226, 176, 0, 0, -1],
-        [2, 180, 62, 60, 0, 0, -1],
-        [66, 180, 61, 49, 0, -4, -10]
-    ],
-    "animations": {
-        "cloud": [0],
-        "island": [1],
-        "plane": [2]
-    }
-};
 // Game Variables
 var ocean;
 var plane;
@@ -45,16 +23,12 @@ var island;
 var clouds = [];
 var scoreboard;
 // Game Managers
+var assets;
 var collision;
 // Preloader Function
 function preload() {
-    assets = new createjs.LoadQueue();
-    assets.installPlugin(createjs.Sound);
-    // event listener triggers when assets are completely loaded
-    assets.on("complete", init, this);
-    assets.loadManifest(manifest);
-    // create texture atlas
-    atlas = new createjs.SpriteSheet(data);
+    // instantiate asset manager class
+    assets = new managers.Asset();
     // setup statistics object
     setupStats();
 }
@@ -96,7 +70,7 @@ function gameLoop() {
 // Our Main Game Function
 function main() {
     // Add ocean object to stage
-    ocean = new objects.Ocean(assets.getResult("ocean"));
+    ocean = new objects.Ocean(assets.loader.getResult("ocean"));
     stage.addChild(ocean);
     // Add island object to stage
     island = new objects.Island("island");
