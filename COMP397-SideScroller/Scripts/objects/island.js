@@ -13,24 +13,27 @@ var objects;
         function Island(imageString) {
             _super.call(this, imageString);
             this.name = "island";
-            this.sound = "yay";
+            this.sound = "pickUp";
             this.dy = 5;
             this.reset();
         }
         // Private Methods + + + + +
         Island.prototype.checkBounds = function () {
             // check if island has left the screen
-            if (this.y > 480 + this.height) {
+            if (this.x < 0) {
                 this.reset();
             }
         };
         Island.prototype.reset = function () {
-            this.x = Math.floor(Math.random() * 640); // starts island at random location
-            this.y = -this.height; // starts island off stage
+            this.x = 1050; // starts island at random location
+            this.y = Math.floor(Math.random() * 510) + 20; // starts island off stage
+            do {
+                this.dx = Math.floor(Math.random() * 2) + 8;
+            } while (this.dx == 0);
         };
         // Public Methods + + + + +
         Island.prototype.update = function () {
-            this.y += this.dy; // moves the island down the stage
+            this.x -= this.dx; // moves the island down the stage
             this.checkBounds();
         };
         return Island;

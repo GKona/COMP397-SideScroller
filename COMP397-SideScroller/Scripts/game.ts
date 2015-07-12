@@ -6,6 +6,7 @@
 
 /// <reference path="utility/utility.ts" />
 /// <reference path="managers/assets.ts" />
+/// <reference path="constants.ts" />
 
 /// <reference path="objects/gameobject.ts" />
 /// <reference path="objects/ocean.ts" />
@@ -14,10 +15,13 @@
 /// <reference path="objects/cloud.ts" />
 
 /// <reference path="objects/scoreboard.ts" />
-
+/// <reference path="objects/button.ts" />
+/// <reference path="objects/label.ts" />
 /// <reference path="managers/collision.ts" />
 
 /// <reference path="states/play.ts" />
+/// <reference path="states/menu.ts" />
+/// <reference path="states/gameover.ts" />
 
 // Game Framework Variables
 var canvas = document.getElementById("canvas");
@@ -35,8 +39,14 @@ var scoreboard: objects.ScoreBoard;
 // Game Managers
 var assets: managers.Asset;
 var collision: managers.Collision;
-// Game States
-var play: states.Play;
+
+// Buttons
+var tryAgain: objects.Button;
+var playButton: objects.Button;
+
+// State manager
+var currentState: number;
+var currentStateFunction;
 
 // Preloader Function
 function preload() {
@@ -53,10 +63,21 @@ function init() {
     createjs.Ticker.setFPS(60); // framerate 60 fps for the game
     // event listener triggers 60 times every second
     createjs.Ticker.on("tick", gameLoop); 
-
+    //optimizeForMobile();
     // calling main game function
-    main();
+    currentState = constants.PLAY_STATE;
+    changeState(currentState);
+    //main();
 }
+
+// Add touch support for mobile devices
+/*
+function optimizeForMobile() {
+    if (createjs.Touch.isSupported()) {
+        createjs.Touch.enable(stage);
+    }
+}
+*/
 
 // function to setup stat counting
 function setupStats() {
@@ -65,8 +86,8 @@ function setupStats() {
 
     // align bottom-right
     stats.domElement.style.position = 'absolute';
-    stats.domElement.style.left = '650px';
-    stats.domElement.style.top = '10px';
+    stats.domElement.style.left = '1010px';
+    stats.domElement.style.top = '8px';
 
     document.body.appendChild(stats.domElement);
 }
@@ -75,8 +96,8 @@ function setupStats() {
 // Callback function that creates our Main Game Loop - refreshed 60 fps
 function gameLoop() {
     stats.begin(); // Begin measuring
-
-    play.update();
+    currentStateFunction();
+    //play.update();
 
     stage.update();
 
@@ -84,6 +105,7 @@ function gameLoop() {
 }
 
 // Our Main Game Function
+/*
 function main() {
     // Instantiate new game container
     game = new createjs.Container();
@@ -92,4 +114,26 @@ function main() {
     // add game container to stage
     stage.addChild(game);
     console.log(play);
+}
+*/
+
+function changeState(state: number): void {
+    // Launch Various "Screens"
+    switch (state) {
+        case constants.MENU_STATE:
+            // Instatiate menu screen
+            currentStateFunction = states.menuState;
+            states.Menu();
+            break;
+        case constants.PLAY_STATE:
+            // instantiate play screen
+            currentStateFunction = states.playState;
+            states.play();
+            break;
+        case constants.GAME_OVER_STATE:
+            currentStateFunction = states.gameOverState;
+            // instantiate game over screen
+            states.gameOver();
+            break;
+    }
 }

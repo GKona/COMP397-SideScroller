@@ -19,20 +19,26 @@ var objects;
         // Private Methods + + + + +
         Cloud.prototype.checkBounds = function () {
             // check if cloud has left the screen
-            if (this.y > 480 + this.height) {
+            if (this.x < 0) {
                 this.reset();
             }
         };
         Cloud.prototype.reset = function () {
-            this.x = Math.floor(Math.random() * 640); // starts cloud at random location
-            this.y = -this.height; // starts cloud off stage
-            this.dy = Math.floor(Math.random() * 5) + 5;
-            this.dx = Math.floor(Math.random() * 4) - 2;
+            this.y = Math.floor(Math.random() * 510) + 20; // starts cloud at random location
+            this.x = Math.floor(Math.random() * 300) + 1050; // starts cloud off stage
+            do {
+                this.dx = Math.floor(Math.random() * 2) + 8;
+            } while (this.dx == 0);
+            //this.dx = Math.floor(Math.random() * 10) + 5;
+            do {
+                this.dy = Math.floor(Math.random() * 4) - 2;
+            } while (this.dy == 0);
+            //this.dy = Math.floor(Math.random() * 4) - 2;
         };
         // Public Methods + + + + +
         Cloud.prototype.update = function () {
-            this.y += this.dy; // moves the cloud down the stage
-            this.x += this.dx; // moves the cloud right and left
+            this.x -= this.dx; // moves the demon left through the stage
+            this.y -= this.dy; // moves the demon up and down
             this.checkBounds();
         };
         return Cloud;

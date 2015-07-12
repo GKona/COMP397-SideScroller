@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>3.9.1</string>
         <key>fileName</key>
-        <string>C:/Users/geri/Documents/GitHub/COMP397-SideScroller/COMP397-SideScroller/assets/images/Sidescroller.tps</string>
+        <string>C:/Users/geri/Documents/GitHub/COMP397-SideScroller/COMP397-SideScroller/assets/images/atlasTP.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -104,7 +104,7 @@
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
-            <enum type="AlgorithmSettings::AlgorithmId">MaxRects</enum>
+            <enum type="AlgorithmSettings::AlgorithmId">Basic</enum>
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
@@ -147,7 +147,7 @@
             <key>json</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>Sidescroller.json</filename>
+                <filename>atlas.json</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -182,7 +182,7 @@
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMode</key>
-            <enum type="SpriteSettings::TrimMode">Trim</enum>
+            <enum type="SpriteSettings::TrimMode">None</enum>
             <key>heuristicMask</key>
             <false/>
             <key>pivotPoint</key>
@@ -190,9 +190,31 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>cloud.png</filename>
-            <filename>island.png</filename>
-            <filename>plane.png</filename>
+            <filename>../../../../../../Desktop/assets/crow1.png</filename>
+            <filename>../../../../../../Desktop/assets/crow1b.png</filename>
+            <filename>../../../../../../Desktop/assets/crow2.png</filename>
+            <filename>../../../../../../Desktop/assets/crow2b.png</filename>
+            <filename>../../../../../../Desktop/assets/crow3.png</filename>
+            <filename>../../../../../../Desktop/assets/crow3b.png</filename>
+            <filename>../../../../../../Desktop/assets/crow4.png</filename>
+            <filename>../../../../../../Desktop/assets/crow4b.png</filename>
+            <filename>../../../../../../Desktop/assets/demon1.png</filename>
+            <filename>../../../../../../Desktop/assets/demon2.png</filename>
+            <filename>../../../../../../Desktop/assets/ex1.png</filename>
+            <filename>../../../../../../Desktop/assets/ex1b.png</filename>
+            <filename>../../../../../../Desktop/assets/ex2.png</filename>
+            <filename>../../../../../../Desktop/assets/ex2b.png</filename>
+            <filename>../../../../../../Desktop/assets/ex3.png</filename>
+            <filename>../../../../../../Desktop/assets/ex3b.png</filename>
+            <filename>../../../../../../Desktop/assets/ex4.png</filename>
+            <filename>../../../../../../Desktop/assets/ex4b.png</filename>
+            <filename>../../../../../../Desktop/assets/ex5.png</filename>
+            <filename>../../../../../../Desktop/assets/ex5b.png</filename>
+            <filename>../../../../../../Desktop/assets/ex6.png</filename>
+            <filename>../../../../../../Desktop/assets/ex6b.png</filename>
+            <filename>../../../../../../Desktop/assets/coin.png</filename>
+            <filename>../../../../../../Desktop/assets/bullet.png</filename>
+            <filename>../../../../../../Desktop/assets/pirateCoin.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

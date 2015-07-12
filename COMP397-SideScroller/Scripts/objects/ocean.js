@@ -12,7 +12,7 @@ var objects;
         // Constructor + + + + +
         function Ocean(imageString) {
             _super.call(this, imageString);
-            this.dy = 5;
+            this.dx = 5;
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
             this.reset();
@@ -20,17 +20,17 @@ var objects;
         // Private Methods + + + + +
         Ocean.prototype.checkBounds = function () {
             // check if ocean has left the screen
-            if (this.y == 0) {
+            if (this.x == -4000) {
                 this.reset();
             }
         };
         Ocean.prototype.reset = function () {
-            this.x = 0;
-            this.y = -960; // resets ocean off screen
+            this.y = 0;
+            this.x = 0; // resets ocean off screen
         };
         // Public Methods + + + + +
         Ocean.prototype.update = function () {
-            this.y += this.dy; // moves the ocean down the stage
+            this.x -= this.dx; // moves the ocean down the stage
             this.checkBounds();
         };
         return Ocean;

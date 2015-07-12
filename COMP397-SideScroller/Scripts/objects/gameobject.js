@@ -14,6 +14,7 @@ var objects;
             _super.call(this, assets.atlas, imageString);
             this.isColliding = false;
             this.sound = "";
+            this.sound2 = "";
             this.name = "";
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;

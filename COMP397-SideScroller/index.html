@@ -13,7 +13,7 @@
 </head>
 <body onload="preload();">
     <!-- Game Container -->
-    <canvas id="canvas" width="640" height="480"></canvas>
+    <canvas id="canvas" width="1000" height="550"></canvas>
 
     <!-- JavaScript Section -->
     <script src="Scripts/lib/Stats.js"></script>
@@ -21,10 +21,12 @@
     <script src="Scripts/lib/tweenjs-0.6.0.min.js"></script>
     <script src="Scripts/lib/soundjs-0.6.0.min.js"></script>
     <script src="Scripts/lib/preloadjs-0.6.0.min.js"></script>
+
     <!-- Game Objects -->
     <script src="Scripts/utility/utility.js"></script>
     <script src="Scripts/managers/assets.js"></script>
-    
+    <script src="Scripts/constants.js"></script>
+
     <script src="Scripts/objects/gameobject.js"></script>
     <script src="Scripts/objects/ocean.js"></script>
     <script src="Scripts/objects/plane.js"></script>
@@ -32,10 +34,13 @@
     <script src="Scripts/objects/cloud.js"></script>
 
     <script src="Scripts/objects/scoreboard.js"></script>
-    
+    <script src="Scripts/objects/button.js"></script>
+    <script src="Scripts/objects/label.js"></script>
     <script src="Scripts/managers/collision.js"></script>
 
     <script src="Scripts/states/play.js"></script>
+    <script src="Scripts/states/menu.js"></script>
+    <script src="Scripts/states/gameover.js"></script>
 
     <!-- Game Scripts -->
     <script src="Scripts/game.js"></script>
