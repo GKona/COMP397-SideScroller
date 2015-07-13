@@ -11,7 +11,6 @@
             p2.y = gameObject.y;
             if (utility.distance(p1, p2) < ((plane.height) * 0.5 + (gameObject.height * 0.5))) {
                 if (!gameObject.isColliding) {
-                    //console.log("Collision!");
                     createjs.Sound.play(gameObject.sound);
                     if (gameObject.name == "cloud") {
                         scoreboard.lives--;
