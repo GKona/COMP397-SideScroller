@@ -65,7 +65,7 @@ function init() {
     createjs.Ticker.on("tick", gameLoop); 
     //optimizeForMobile();
     // calling main game function
-    currentState = constants.PLAY_STATE;
+    currentState = constants.MENU_STATE;
     changeState(currentState);
     //main();
 }
@@ -123,7 +123,7 @@ function changeState(state: number): void {
         case constants.MENU_STATE:
             // Instatiate menu screen
             currentStateFunction = states.menuState;
-            states.Menu();
+            states.menu();
             break;
         case constants.PLAY_STATE:
             // instantiate play screen
@@ -131,8 +131,8 @@ function changeState(state: number): void {
             states.play();
             break;
         case constants.GAME_OVER_STATE:
-            currentStateFunction = states.gameOverState;
             // instantiate game over screen
+            currentStateFunction = states.gameOverState;
             states.gameOver();
             break;
     }

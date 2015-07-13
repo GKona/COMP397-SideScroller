@@ -1,7 +1,6 @@
 var managers;
 (function (managers) {
     var Collision = (function () {
-        // Constructor + + + + +
         function Collision() {
         }
         // Public Methods + + + + +
@@ -22,6 +21,8 @@ var managers;
                     }
                     if (gameObject.name == "island") {
                         scoreboard.score += 100;
+                        island.reset();
+                        scoreboard.cnt++;
                     }
                 }
                 gameObject.isColliding = true;

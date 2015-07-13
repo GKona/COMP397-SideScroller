@@ -1,17 +1,15 @@
-﻿module states {
-    export function playState() {
+var states;
+(function (states) {
+    function playState() {
         ocean.update();
         plane.update();
         island.update();
-
         for (var cloud = 0; cloud < constants.CLOUD_NUM; cloud++) {
             clouds[cloud].update();
             collision.check(clouds[cloud]);
         }
-        
         collision.check(island);
         scoreboard.update();
-        
         if (scoreboard.lives <= 0) {
             stage.removeChild(game);
             plane.destroy();
@@ -20,9 +18,9 @@
             currentState = constants.GAME_OVER_STATE;
             changeState(currentState);
         }
-        
     }
-    export function play() {
+    states.playState = playState;
+    function play() {
         // Instantiate new game container
         game = new createjs.Container();
         // Add ocean object to stage
@@ -43,8 +41,9 @@
         scoreboard = new objects.ScoreBoard;
         // add collision manager
         collision = new managers.Collision;
-
         // add game container to stage
         stage.addChild(game);
     }
-}
+    states.play = play;
+})(states || (states = {}));
+//# sourceMappingURL=play.js.map

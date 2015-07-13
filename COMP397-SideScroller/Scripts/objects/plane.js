@@ -16,18 +16,18 @@ var objects;
             this.sound2 = "playS";
             this.x = 100;
             this.y = 250;
-            createjs.Sound.play(this.sound, { "loop": -1, "volume": 0.5 });
+            createjs.Sound.play(this.sound, { "loop": -1, "volume": 0.4 });
             createjs.Sound.play(this.sound2, { "loop": -1, "volume": 0.2 });
         }
         // Public Methods + + + + +
         Plane.prototype.update = function () {
-            if (stage.mouseY < 80) {
-                this.y = 80;
+            if (stage.mouseY < 45) {
+                this.y = 45;
             }
             else if (stage.mouseY > 480) {
                 this.y = 480;
             }
-            else if (stage.mouseY > 80 && stage.mouseY < 470) {
+            else if (stage.mouseY > 45 && stage.mouseY < 470) {
                 this.y = stage.mouseY; // position plane under mouse
             }
         };

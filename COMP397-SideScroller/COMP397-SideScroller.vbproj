@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\audio\bill.wav" />
+    <Content Include="assets\audio\damage.wav" />
     <Content Include="assets\audio\engine.wav" />
     <Content Include="assets\audio\explosion.wav" />
     <Content Include="assets\audio\gameOverS.wav" />

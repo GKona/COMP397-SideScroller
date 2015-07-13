@@ -5,7 +5,7 @@
         constructor(imageString: string) {
             super(imageString);
             this.name = "cloud";
-            this.sound = "thunder";
+            this.sound = "damage";
             this.reset();
         }
         // Private Methods + + + + +
@@ -15,7 +15,7 @@
                 this.reset();
             }
         }
-        private reset(): void {
+        public reset(): void {
             this.y = Math.floor(Math.random() * 510) + 20; // starts cloud at random location
             this.x = Math.floor(Math.random() * 300) + 1050; // starts cloud off stage
             do { this.dx = Math.floor(Math.random() * 2) + 8 }

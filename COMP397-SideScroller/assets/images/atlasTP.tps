@@ -191,30 +191,22 @@
         <key>fileList</key>
         <array>
             <filename>../../../../../../Desktop/assets/crow1.png</filename>
-            <filename>../../../../../../Desktop/assets/crow1b.png</filename>
             <filename>../../../../../../Desktop/assets/crow2.png</filename>
-            <filename>../../../../../../Desktop/assets/crow2b.png</filename>
             <filename>../../../../../../Desktop/assets/crow3.png</filename>
-            <filename>../../../../../../Desktop/assets/crow3b.png</filename>
             <filename>../../../../../../Desktop/assets/crow4.png</filename>
-            <filename>../../../../../../Desktop/assets/crow4b.png</filename>
             <filename>../../../../../../Desktop/assets/demon1.png</filename>
             <filename>../../../../../../Desktop/assets/demon2.png</filename>
             <filename>../../../../../../Desktop/assets/ex1.png</filename>
-            <filename>../../../../../../Desktop/assets/ex1b.png</filename>
             <filename>../../../../../../Desktop/assets/ex2.png</filename>
-            <filename>../../../../../../Desktop/assets/ex2b.png</filename>
             <filename>../../../../../../Desktop/assets/ex3.png</filename>
-            <filename>../../../../../../Desktop/assets/ex3b.png</filename>
             <filename>../../../../../../Desktop/assets/ex4.png</filename>
-            <filename>../../../../../../Desktop/assets/ex4b.png</filename>
             <filename>../../../../../../Desktop/assets/ex5.png</filename>
-            <filename>../../../../../../Desktop/assets/ex5b.png</filename>
             <filename>../../../../../../Desktop/assets/ex6.png</filename>
-            <filename>../../../../../../Desktop/assets/ex6b.png</filename>
             <filename>../../../../../../Desktop/assets/coin.png</filename>
             <filename>../../../../../../Desktop/assets/bullet.png</filename>
             <filename>../../../../../../Desktop/assets/pirateCoin.png</filename>
+            <filename>../../../../../../Desktop/assets/playBtn.png</filename>
+            <filename>../../../../../../Desktop/assets/retryBtn.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

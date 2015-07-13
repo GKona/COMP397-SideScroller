@@ -1,8 +1,5 @@
 ﻿module managers {
     export class Collision {
-        // Constructor + + + + +
-        constructor() {
-        }
         // Public Methods + + + + +
         // Check the distance between plane and gameObject
         public check(gameObject: objects.GameObject) {
@@ -21,6 +18,8 @@
                     }
                     if (gameObject.name == "island") {
                         scoreboard.score += 100;
+                        island.reset();
+                        scoreboard.cnt++;
                     }
                 }
                 gameObject.isColliding = true;

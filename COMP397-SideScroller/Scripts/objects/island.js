@@ -25,7 +25,7 @@ var objects;
             }
         };
         Island.prototype.reset = function () {
-            this.x = 1050; // starts island at random location
+            this.x = Math.floor(Math.random() * 500) + 1500; // starts island at random location
             this.y = Math.floor(Math.random() * 510) + 20; // starts island off stage
             do {
                 this.dx = Math.floor(Math.random() * 2) + 8;
