@@ -1,14 +1,13 @@
 var states;
 (function (states) {
-    function playState() {
+    function playState3() {
         horizon.update();
         jetCrow.update();
         gold.update();
         for (var demonDiag = 0; demonDiag < constants.CLOUD_NUM; demonDiag++) {
             demonDiags[demonDiag].update();
-            collision.check(demonDiags[demonDiag]);
         }
-        collision.check(gold);
+        //collision.check(gold);
         scoreboard.update();
         if (scoreboard.lives <= 0) {
             stage.removeChild(game);
@@ -18,9 +17,18 @@ var states;
             currentState = constants.GAME_OVER_STATE;
             changeState(currentState);
         }
+        if (scoreboard.score >= 200) {
+            scoreboard.finalScore += scoreboard.score;
+            stage.removeChild(game);
+            jetCrow.destroy();
+            game.removeAllChildren();
+            game.removeAllEventListeners();
+            currentState = constants.GAME_OVER_STATE;
+            changeState(currentState);
+        }
     }
-    states.playState = playState;
-    function play() {
+    states.playState3 = playState3;
+    function play3() {
         // Instantiate new game container
         game = new createjs.Container();
         // Add horizon object to stage
@@ -40,10 +48,10 @@ var states;
         // add scoreboard
         scoreboard = new objects.ScoreBoard;
         // add collision manager
-        collision = new managers.Collision;
+        //collision = new managers.Collision;
         // add game container to stage
         stage.addChild(game);
     }
-    states.play = play;
+    states.play3 = play3;
 })(states || (states = {}));
-//# sourceMappingURL=play.js.map
+//# sourceMappingURL=play3.js.map

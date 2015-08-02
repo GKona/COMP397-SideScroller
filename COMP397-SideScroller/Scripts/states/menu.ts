@@ -6,7 +6,7 @@
         createjs.Sound.stop();
         game.removeAllChildren();
         game.removeAllEventListeners();
-        currentState = constants.PLAY_STATE;
+        currentState = constants.PLAY1_STATE;
         changeState(currentState);
     }
     export function menu() {
@@ -16,8 +16,8 @@
         // Declare new game container
         game = new createjs.Container();
 
-        ocean = new objects.Ocean(assets.loader.getResult("menuScrn"));
-        game.addChild(ocean);
+        horizon = new objects.Horizon(assets.loader.getResult("menuScrn"));
+        game.addChild(horizon);
         
         // Show cursor
         stage.cursor = "default";

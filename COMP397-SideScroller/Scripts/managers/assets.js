@@ -6,6 +6,8 @@ var managers;
             // Private Properties
             this.manifest = [
                 { id: "city", src: "assets/images/city.jpg" },
+                { id: "cityP", src: "assets/images/cityPurp.jpg" },
+                { id: "cityB", src: "assets/images/cityBlue.jpg" },
                 { id: "gameOverScrn", src: "assets/images/gameOver.png" },
                 { id: "menuScrn", src: "assets/images/menu.jpg" },
                 { id: "pickUp", src: "assets/audio/pickUp.wav" },
