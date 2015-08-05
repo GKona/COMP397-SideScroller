@@ -5,6 +5,7 @@
         public width: number;
         public height: number;
         public isColliding: boolean = false;
+        public isColB: boolean = false;
         public sound: string = "";
         public sound2: string = "";
         public name: string = "";
