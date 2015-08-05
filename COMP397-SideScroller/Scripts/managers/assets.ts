@@ -6,8 +6,6 @@
         // Private Properties
         private manifest = [
             { id: "city", src: "assets/images/city.jpg" },
-            { id: "cityP", src: "assets/images/cityPurp.jpg" },
-            { id: "cityB", src: "assets/images/cityBlue.jpg" },
             { id: "gameOverScrn", src: "assets/images/gameOver.png" },
             { id: "menuScrn", src: "assets/images/menu.jpg" },
             { id: "pickUp", src: "assets/audio/pickUp.wav" },
@@ -16,8 +14,7 @@
             { id: "menuS", src: "assets/audio/menuS.wav" },
             { id: "playS", src: "assets/audio/playS.wav" },
             { id: "engine", src: "assets/audio/engine.wav" },
-            { id: "damage", src: "assets/audio/damage.wav" },
-            { id: "bill", src: "assets/audio/bill.wav" }
+            { id: "damage", src: "assets/audio/damage.wav" }
         ];
 
         private data = {
@@ -72,9 +69,8 @@
                     speed: 0.2
                 },
                 explosion: {
-                    frames: [8, 9, 10, 11, 12, 13],
-                    next: false,
-                    speed: 0.3
+                    frames: [8, 13],
+                    speed: 0.8
                 }
             }
 

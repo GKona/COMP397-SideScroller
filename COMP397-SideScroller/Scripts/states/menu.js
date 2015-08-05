@@ -8,7 +8,7 @@ var states;
         createjs.Sound.stop();
         game.removeAllChildren();
         game.removeAllEventListeners();
-        currentState = constants.PLAY1_STATE;
+        currentState = constants.PLAY_STATE;
         changeState(currentState);
     }
     states.playButtonClicked = playButtonClicked;
@@ -18,8 +18,8 @@ var states;
         var gameNameLabel2 = new createjs.Text("Jet-Crow", "80px papyrus", "#053860");
         // Declare new game container
         game = new createjs.Container();
-        horizon = new objects.Horizon(assets.loader.getResult("menuScrn"));
-        game.addChild(horizon);
+        ocean = new objects.Ocean(assets.loader.getResult("menuScrn"));
+        game.addChild(ocean);
         // Show cursor
         stage.cursor = "default";
         // Display Game Title

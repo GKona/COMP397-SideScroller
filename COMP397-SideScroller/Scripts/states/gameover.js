@@ -2,9 +2,9 @@ var states;
 (function (states) {
     function gameOverState() {
         // displays background
-        //horizon.update();
-        //jetCrow.update();
-        //gold.update();
+        //ocean.update();
+        //plane.update();
+        //island.update();
     }
     states.gameOverState = gameOverState;
     function tryAgainClicked(event) {
@@ -12,7 +12,7 @@ var states;
         createjs.Sound.stop();
         game.removeAllChildren();
         game.removeAllEventListeners();
-        currentState = constants.PLAY1_STATE;
+        currentState = constants.PLAY_STATE;
         changeState(currentState);
     }
     states.tryAgainClicked = tryAgainClicked;
@@ -27,12 +27,10 @@ var states;
         var gameOverLabel2 = new createjs.Text("GAME OVER!", "80px rockwell", "#3B1D8D");
         var finalScoreLabel1 = new createjs.Text("FINAL SCORE!", "60px rockwell", "#4E0153");
         var finalScoreLabel2 = new createjs.Text("FINAL SCORE!", "60px rockwell", "#3B1D8D");
-        //var finalScore1 = new createjs.Text(scoreboard.score.toString(), "150px Brush Script MT", "#D22A07");
-        //var finalScore2 = new createjs.Text(scoreboard.score.toString(), "150px Brush Script MT", "#D2B007");
-        var finalScore1 = new createjs.Text(scoreboard.finalScore.toString(), "150px Brush Script MT", "#D22A07");
-        var finalScore2 = new createjs.Text(scoreboard.finalScore.toString(), "150px Brush Script MT", "#D2B007");
-        horizon = new objects.Horizon(assets.loader.getResult("gameOverScrn"));
-        game.addChild(horizon);
+        var finalScore1 = new createjs.Text(scoreboard.score.toString(), "150px Brush Script MT", "#D22A07");
+        var finalScore2 = new createjs.Text(scoreboard.score.toString(), "150px Brush Script MT", "#D2B007");
+        ocean = new objects.Ocean(assets.loader.getResult("gameOverScrn"));
+        game.addChild(ocean);
         // show cursor
         stage.cursor = "default";
         // display game over

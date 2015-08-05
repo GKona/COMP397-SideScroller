@@ -7,22 +7,15 @@
 /// <reference path="managers/assets.ts" />
 /// <reference path="constants.ts" />
 /// <reference path="objects/gameobject.ts" />
-/// <reference path="objects/horizon.ts" />
-/// <reference path="objects/jetCrow.ts" />
-/// <reference path="objects/gold.ts" />
-/// <reference path="objects/demonDiag.ts" />
-/// <reference path="objects/demonStrt.ts" />
-/// <reference path="objects/demonWave.ts" />
-/// <reference path="objects/explosion.ts" />
-/// <reference path="objects/bullet.ts" />
+/// <reference path="objects/ocean.ts" />
+/// <reference path="objects/plane.ts" />
+/// <reference path="objects/island.ts" />
+/// <reference path="objects/cloud.ts" />
 /// <reference path="objects/scoreboard.ts" />
 /// <reference path="objects/button.ts" />
 /// <reference path="objects/label.ts" />
 /// <reference path="managers/collision.ts" />
-/// <reference path="managers/bulletm.ts" />
-/// <reference path="states/play1.ts" />
-/// <reference path="states/play2.ts" />
-/// <reference path="states/play3.ts" />
+/// <reference path="states/play.ts" />
 /// <reference path="states/menu.ts" />
 /// <reference path="states/gameover.ts" />
 // Game Framework Variables
@@ -31,17 +24,14 @@ var stage;
 var stats;
 var game;
 // Game Variables
-var horizon;
-var jetCrow;
-var gold;
-var demonDiags = [];
-var demonStrts = [];
-var demonWaves = [];
+var ocean;
+var plane;
+var island;
+var clouds = [];
 var scoreboard;
 // Game Managers
 var assets;
 var collision;
-var bulletM;
 // Buttons
 var tryAgain;
 var playButton;
@@ -62,18 +52,20 @@ function init() {
     createjs.Ticker.setFPS(60); // framerate 60 fps for the game
     // event listener triggers 60 times every second
     createjs.Ticker.on("tick", gameLoop);
-    optimizeForMobile();
+    //optimizeForMobile();
     // calling main game function
     currentState = constants.MENU_STATE;
     changeState(currentState);
     //main();
 }
 // Add touch support for mobile devices
+/*
 function optimizeForMobile() {
     if (createjs.Touch.isSupported()) {
         createjs.Touch.enable(stage);
     }
 }
+*/
 // function to setup stat counting
 function setupStats() {
     stats = new Stats();
@@ -82,15 +74,28 @@ function setupStats() {
     stats.domElement.style.position = 'absolute';
     stats.domElement.style.left = '1010px';
     stats.domElement.style.top = '8px';
-    //document.body.appendChild(stats.domElement);
+    document.body.appendChild(stats.domElement);
 }
 // Callback function that creates our Main Game Loop - refreshed 60 fps
 function gameLoop() {
     stats.begin(); // Begin measuring
     currentStateFunction();
+    //play.update();
     stage.update();
     stats.end(); // end measuring
 }
+// Our Main Game Function
+/*
+function main() {
+    // Instantiate new game container
+    game = new createjs.Container();
+    // Instantiate play state
+    play = new states.Play();
+    // add game container to stage
+    stage.addChild(game);
+    console.log(play);
+}
+*/
 function changeState(state) {
     // Launch Various "Screens"
     switch (state) {
@@ -99,20 +104,10 @@ function changeState(state) {
             currentStateFunction = states.menuState;
             states.menu();
             break;
-        case constants.PLAY1_STATE:
+        case constants.PLAY_STATE:
             // instantiate play screen
-            currentStateFunction = states.playState1;
-            states.play1();
-            break;
-        case constants.PLAY2_STATE:
-            // instantiate play screen
-            currentStateFunction = states.playState2;
-            states.play2();
-            break;
-        case constants.PLAY3_STATE:
-            // instantiate play screen
-            currentStateFunction = states.playState3;
-            states.play3();
+            currentStateFunction = states.playState;
+            states.play();
             break;
         case constants.GAME_OVER_STATE:
             // instantiate game over screen

@@ -1,18 +1,18 @@
 var states;
 (function (states) {
     function playState() {
-        horizon.update();
-        jetCrow.update();
-        gold.update();
-        for (var demonDiag = 0; demonDiag < constants.CLOUD_NUM; demonDiag++) {
-            demonDiags[demonDiag].update();
-            collision.check(demonDiags[demonDiag]);
+        ocean.update();
+        plane.update();
+        island.update();
+        for (var cloud = 0; cloud < constants.CLOUD_NUM; cloud++) {
+            clouds[cloud].update();
+            collision.check(clouds[cloud]);
         }
-        collision.check(gold);
+        collision.check(island);
         scoreboard.update();
         if (scoreboard.lives <= 0) {
             stage.removeChild(game);
-            jetCrow.destroy();
+            plane.destroy();
             game.removeAllChildren();
             game.removeAllEventListeners();
             currentState = constants.GAME_OVER_STATE;
@@ -23,19 +23,19 @@ var states;
     function play() {
         // Instantiate new game container
         game = new createjs.Container();
-        // Add horizon object to stage
-        horizon = new objects.Horizon(assets.loader.getResult("city"));
-        game.addChild(horizon);
-        // Add gold object to stage
-        gold = new objects.Gold("coin");
-        game.addChild(gold);
-        // Add jetCrow object to stage
-        jetCrow = new objects.JetCrow("crow");
-        game.addChild(jetCrow);
-        // Add demonDiag objects to stage
-        for (var demonDiag = 0; demonDiag < constants.CLOUD_NUM; demonDiag++) {
-            demonDiags[demonDiag] = new objects.DemonDiag("demon");
-            game.addChild(demonDiags[demonDiag]);
+        // Add ocean object to stage
+        ocean = new objects.Ocean(assets.loader.getResult("city"));
+        game.addChild(ocean);
+        // Add island object to stage
+        island = new objects.Island("coin");
+        game.addChild(island);
+        // Add plane object to stage
+        plane = new objects.Plane("crow");
+        game.addChild(plane);
+        // Add cloud objects to stage
+        for (var cloud = 0; cloud < constants.CLOUD_NUM; cloud++) {
+            clouds[cloud] = new objects.Cloud("demon");
+            game.addChild(clouds[cloud]);
         }
         // add scoreboard
         scoreboard = new objects.ScoreBoard;
