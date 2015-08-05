@@ -13,6 +13,7 @@ var objects;
         function GameObject(imageString) {
             _super.call(this, assets.atlas, imageString);
             this.isColliding = false;
+            this.isColB = false;
             this.sound = "";
             this.sound2 = "";
             this.name = "";
