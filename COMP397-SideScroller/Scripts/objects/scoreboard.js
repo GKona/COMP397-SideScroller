@@ -5,7 +5,8 @@ var objects;
         function ScoreBoard() {
             // Public Properties
             this.score = 0;
-            this.lives = constants.PLANE_LIVES;
+            this.finalScore = 0;
+            this.lives = constants.CROW_LIVES;
             this.cnt = 0;
             this.livesLabel1 = new createjs.Text("Lives:", "28px Consolas", "#042036");
             this.livesLabel2 = new createjs.Text("Lives:", "28px Consolas", "#708DA4");
@@ -30,7 +31,7 @@ var objects;
             this.scoreLabel2.text = "Score: " + this.score;
             this.scoreLabel2.x = 200;
             this.scoreLabel2.y = 518;
-            if (this.cnt == 10) {
+            if (this.cnt == 15) {
                 this.cnt = 0;
                 this.lives++;
                 createjs.Sound.play("oneUp", { "volume": 0.4 });

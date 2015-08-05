@@ -1,12 +1,13 @@
-var states;
-(function (states) {
-    function playState1(gameObject) {
+﻿module states {
+    export function playState1(gameObject: objects.GameObject) {
         horizon.update();
         jetCrow.update();
         gold.update();
+
         for (var demonStrt = 0; demonStrt < constants.CLOUD_NUM; demonStrt++) {
-            demonStrts[demonStrt].update();
+            demonStrts[demonStrt].update();         
         }
+        
         bulletM.update();
         collision.update();
         scoreboard.update();
@@ -31,16 +32,18 @@ var states;
         }
         */
     }
-    states.playState1 = playState1;
+
     function mouseDown() {
         bulletM.firing = true;
     }
+
     function mouseUp() {
         setTimeout(function (e) {
             bulletM.firing = false;
         }, 40);
     }
-    function play1() {
+
+    export function play1() {
         // Instantiate new game container
         game = new createjs.Container();
         // remove cursor
@@ -67,11 +70,10 @@ var states;
         bulletM = new managers.BulletM(jetCrow, game);
         // add collision manager
         collision = new managers.Collision(jetCrow, gold, demonDiags, demonStrts, demonWaves, scoreboard, game, bulletM.bullets);
+        
         game.addEventListener("mousedown", mouseDown);
         game.addEventListener("pressup", mouseUp);
         // add game container to stage
         stage.addChild(game);
     }
-    states.play1 = play1;
-})(states || (states = {}));
-//# sourceMappingURL=play1.js.map
+}

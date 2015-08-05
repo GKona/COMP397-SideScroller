@@ -1,16 +1,13 @@
 ﻿module objects {
-    // Plane Class + + + + +
-    export class Plane extends objects.GameObject {
+    // jetCrow Class + + + + +
+    export class JetCrow extends objects.GameObject {
         // Constructor + + + + +
         constructor(imageString: string) {
             super(imageString); 
             this.sound = "engine";
-            this.sound2 = "playS";
             this.x = 100;
             this.y = 250;
             createjs.Sound.play(this.sound, { "loop": -1, "volume": 0.4 });
-            createjs.Sound.play(this.sound2, { "loop": -1, "volume": 0.2 });
-            
         }
         // Public Methods + + + + +
         public update(): void {
@@ -21,13 +18,25 @@
                 this.y = 480;
             }
             else if (stage.mouseY > 45 && stage.mouseY < 470) {
-                this.y = stage.mouseY; // position plane under mouse
+                this.y = stage.mouseY; // position jetCrow under mouse
             }
+
+            if (stage.mouseX < 65) {
+                this.x = 65;
+            }
+            else if (stage.mouseX > 900) {
+                this.x = 900;
+            }
+            else if (stage.mouseX > 65 && stage.mouseX < 900) {
+                this.x = stage.mouseX; // position jetCrow under mouse
+            }
+
+
         }
         public destroy() {
             // remove sound and sprite
             createjs.Sound.stop();
-            game.removeChild(plane);
+            game.removeChild(jetCrow);
         }
     }
 }

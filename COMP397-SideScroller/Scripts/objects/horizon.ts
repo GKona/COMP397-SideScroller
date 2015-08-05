@@ -1,6 +1,6 @@
 ﻿module objects {
-    // Ocean Class + + + + +
-    export class Ocean extends createjs.Bitmap {
+    // Horizon Class + + + + +
+    export class Horizon extends createjs.Bitmap {
         // Public Properties + + + + +
         width: number;
         height: number;
@@ -14,18 +14,18 @@
         }
         // Private Methods + + + + +
         private checkBounds(): void {
-            // check if ocean has left the screen
+            // check if horizon has left the screen
             if (this.x == -4000) {
                 this.reset();
             }
         }
         private reset(): void {
             this.y = 0;
-            this.x = 0; // resets ocean off screen
+            this.x = 0; // resets horizon off screen
         }
         // Public Methods + + + + +
         public update(): void {
-            this.x -= this.dx; // moves the ocean down the stage
+            this.x -= this.dx; // moves the horizon left of the stage
             this.checkBounds();
         }
     }

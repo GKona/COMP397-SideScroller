@@ -2,7 +2,8 @@
     export class ScoreBoard {
         // Public Properties
         public score: number = 0;
-        public lives: number = constants.PLANE_LIVES;
+        public finalScore: number = 0;
+        public lives: number = constants.CROW_LIVES;
         public cnt: number = 0;
         private scoreLabel1: createjs.Text;
         private scoreLabel2: createjs.Text;
@@ -33,8 +34,7 @@
             this.scoreLabel2.text = "Score: " + this.score;  
             this.scoreLabel2.x = 200;
             this.scoreLabel2.y = 518;
-
-            if (this.cnt == 10) {
+            if (this.cnt == 15) {
                 this.cnt = 0;
                 this.lives++;
                 createjs.Sound.play("oneUp", { "volume": 0.4 });
