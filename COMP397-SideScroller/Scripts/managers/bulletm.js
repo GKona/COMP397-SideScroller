@@ -1,22 +1,19 @@
-﻿/// <reference path="../objects/jetcrow.ts" />
+/// <reference path="../objects/jetcrow.ts" />
 /// <reference path="../objects/bullet.ts" />
- 
-module managers {
-    export class BulletM {
-        game: createjs.Container;
-        jetCrow: objects.JetCrow;
-        bullets = [];
-        bulletCnt: number = 0;
-        firing: boolean = false;
-        constructor(jetCrow: objects.JetCrow, game: createjs.Container) {
+var managers;
+(function (managers) {
+    var BulletM = (function () {
+        function BulletM(jetCrow, game) {
+            this.bullets = [];
+            this.bulletCnt = 0;
+            this.firing = false;
             this.game = game;
             this.jetCrow = jetCrow;
         }
-
-        fire() {
+        BulletM.prototype.fire = function () {
             if (this.bullets.length < 2) {
                 // create a bullet in front of the jetcrow
-                var pew: objects.Bullet = new objects.Bullet(this.game);
+                var pew = new objects.Bullet(this.game);
                 this.game.addChild(pew);
                 pew.x = this.jetCrow.x + 60;
                 pew.y = this.jetCrow.y + 20;
@@ -24,11 +21,10 @@ module managers {
                 // Play bullet sound
                 createjs.Sound.play("bill");
             }
-        }
-
-        update() {
-            var len: number = this.bullets.length -1;
-            var bullet: objects.Bullet;
+        };
+        BulletM.prototype.update = function () {
+            var len = this.bullets.length - 1;
+            var bullet;
             for (var count = len; count >= 0; count--) {
                 bullet = this.bullets[count];
                 // move current bullet right of stage
@@ -42,23 +38,23 @@ module managers {
             if ((this.firing == true) && (this.bulletCnt % 10 == 0)) {
                 this.fire();
             }
-            
             // increment bullet count to limit number of bullets being fired
             this.bulletCnt++;
-        }
-
-        destroyBullet(bullet: objects.Bullet) {
-            var len: number = this.bullets.length;
-
+        };
+        BulletM.prototype.destroyBullet = function (bullet) {
+            var len = this.bullets.length;
             // remove bullet from game and from bullet array
             for (var count = 0; count < len; count++) {
-                if (this.bullets[count] == bullet); {
+                if (this.bullets[count] == bullet)
+                    ;
+                {
                     this.bullets.splice(count, 1);
                     this.game.removeChild(bullet);
                 }
             }
-        }
-
-        
-    }
-}
+        };
+        return BulletM;
+    })();
+    managers.BulletM = BulletM;
+})(managers || (managers = {}));
+//# sourceMappingURL=bulletm.js.map

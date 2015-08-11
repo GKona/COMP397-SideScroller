@@ -10,6 +10,7 @@ div {
     height:550px;
     margin-left:auto;
     margin-right:auto;
+    margin-top: 25px;
 }
 canvas {
     border: solid 10px black;

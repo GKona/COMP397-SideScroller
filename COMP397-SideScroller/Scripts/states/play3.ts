@@ -1,11 +1,11 @@
 ﻿module states {
-    export function playState1(gameObject: objects.GameObject) {
+    export function playState3(gameObject: objects.GameObject) {
         horizon.update();
         jetCrow.update();
         gold.update();
 
-        for (var demonStrt = 0; demonStrt < constants.CLOUD_NUM; demonStrt++) {
-            demonStrts[demonStrt].update();         
+        for (var demonWave = 0; demonWave < constants.CLOUD_NUM; demonWave++) {
+            demonWaves[demonWave].update();
         }
         
         bulletM.update();
@@ -20,14 +20,14 @@
             currentState = constants.GAME_OVER_STATE;
             changeState(currentState);
         }
-        
+
         if (scoreboard.score >= 200) {
             constants.FINAL_SCORE += scoreboard.score;
             stage.removeChild(game);
             jetCrow.destroy();
             game.removeAllChildren();
             game.removeAllEventListeners();
-            prevState = constants.PLAY1_STATE;
+            prevState = constants.PLAY3_STATE;
             currentState = constants.LEVEL_BUFFER;
             changeState(currentState);
         }
@@ -41,11 +41,12 @@
     }
     function mouseUp() {
         setTimeout(function (e) {
-        bulletM.firing = false;
+            bulletM.firing = false;
         }, 40);
     }
-    export function play1() {
-        constants.FINAL_SCORE = 0;
+
+    export function play3() {
+        constants.CLOUD_NUM = 15;
         // Instantiate new game container
         game = new createjs.Container();
         // remove cursor
@@ -53,7 +54,7 @@
         //add music
         createjs.Sound.play("playS", { "loop": -1, "volume": 0.1 });
         // Add horizon object to stage
-        horizon = new objects.Horizon(assets.loader.getResult("cityB"));
+        horizon = new objects.Horizon(assets.loader.getResult("city"));
         game.addChild(horizon);
         // Add gold object to stage
         gold = new objects.Gold("coin");
@@ -61,10 +62,10 @@
         // Add jetCrow object to stage
         jetCrow = new objects.JetCrow("crow");
         game.addChild(jetCrow);
-        // Add demonStrt objects to stage
-        for (var demonStrt = 0; demonStrt < constants.CLOUD_NUM; demonStrt++) {
-            demonStrts[demonStrt] = new objects.DemonStrt("demon");
-            game.addChild(demonStrts[demonStrt]);
+        // Add demonWave objects to stage
+        for (var demonWave = 0; demonWave < constants.CLOUD_NUM; demonWave++) {
+            demonWaves[demonWave] = new objects.DemonWave("demon");
+            game.addChild(demonWaves[demonWave]);
         }
         // add scoreboard
         scoreboard = new objects.ScoreBoard;

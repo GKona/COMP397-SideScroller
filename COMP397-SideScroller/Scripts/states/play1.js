@@ -1,17 +1,15 @@
-﻿module states {
-    export function playState1(gameObject: objects.GameObject) {
+var states;
+(function (states) {
+    function playState1(gameObject) {
         horizon.update();
         jetCrow.update();
         gold.update();
-
         for (var demonStrt = 0; demonStrt < constants.CLOUD_NUM; demonStrt++) {
-            demonStrts[demonStrt].update();         
+            demonStrts[demonStrt].update();
         }
-        
         bulletM.update();
         collision.update();
         scoreboard.update();
-        
         if (scoreboard.lives <= 0) {
             stage.removeChild(game);
             jetCrow.destroy();
@@ -20,7 +18,6 @@
             currentState = constants.GAME_OVER_STATE;
             changeState(currentState);
         }
-        
         if (scoreboard.score >= 200) {
             constants.FINAL_SCORE += scoreboard.score;
             stage.removeChild(game);
@@ -31,8 +28,8 @@
             currentState = constants.LEVEL_BUFFER;
             changeState(currentState);
         }
-        
     }
+    states.playState1 = playState1;
     function mouseDown() {
         bulletM.firing = true;
         setTimeout(function (e) {
@@ -41,10 +38,10 @@
     }
     function mouseUp() {
         setTimeout(function (e) {
-        bulletM.firing = false;
+            bulletM.firing = false;
         }, 40);
     }
-    export function play1() {
+    function play1() {
         constants.FINAL_SCORE = 0;
         // Instantiate new game container
         game = new createjs.Container();
@@ -77,4 +74,6 @@
         // add game container to stage
         stage.addChild(game);
     }
-}
+    states.play1 = play1;
+})(states || (states = {}));
+//# sourceMappingURL=play1.js.map

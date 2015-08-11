@@ -4,9 +4,9 @@
         <key>fileFormatVersion</key>
         <int>3</int>
         <key>texturePackerVersion</key>
-        <string>3.9.1</string>
+        <string>3.9.2</string>
         <key>fileName</key>
-        <string>C:/Users/geri/Documents/GitHub/COMP397-SideScroller/COMP397-SideScroller/assets/images/atlasTP.tps</string>
+        <string>C:/Users/geri/Desktop/atlas.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -58,7 +58,7 @@
         <key>jxrCompressionLevel</key>
         <uint>0</uint>
         <key>ditherType</key>
-        <enum type="SettingsBase::DitherType">FloydSteinberg</enum>
+        <enum type="SettingsBase::DitherType">NearestNeighbour</enum>
         <key>backgroundColor</key>
         <uint>0</uint>
         <key>libGdx</key>
@@ -121,7 +121,7 @@
             <key>basic</key>
             <struct type="AlgorithmBasicSettings">
                 <key>sortBy</key>
-                <enum type="AlgorithmBasicSettings::SortBy">Best</enum>
+                <enum type="AlgorithmBasicSettings::SortBy">Name</enum>
                 <key>order</key>
                 <enum type="AlgorithmBasicSettings::Order">Ascending</enum>
             </struct>
@@ -147,7 +147,7 @@
             <key>json</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>atlas.json</filename>
+                <filename>../Documents/GitHub/COMP397-SideScroller/COMP397-SideScroller/assets/images/atlas.json</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -182,7 +182,7 @@
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMode</key>
-            <enum type="SpriteSettings::TrimMode">None</enum>
+            <enum type="SpriteSettings::TrimMode">Trim</enum>
             <key>heuristicMask</key>
             <false/>
             <key>pivotPoint</key>
@@ -190,23 +190,24 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../../../../../../Desktop/assets/crow1.png</filename>
-            <filename>../../../../../../Desktop/assets/crow2.png</filename>
-            <filename>../../../../../../Desktop/assets/crow3.png</filename>
-            <filename>../../../../../../Desktop/assets/crow4.png</filename>
-            <filename>../../../../../../Desktop/assets/demon1.png</filename>
-            <filename>../../../../../../Desktop/assets/demon2.png</filename>
-            <filename>../../../../../../Desktop/assets/ex1.png</filename>
-            <filename>../../../../../../Desktop/assets/ex2.png</filename>
-            <filename>../../../../../../Desktop/assets/ex3.png</filename>
-            <filename>../../../../../../Desktop/assets/ex4.png</filename>
-            <filename>../../../../../../Desktop/assets/ex5.png</filename>
-            <filename>../../../../../../Desktop/assets/ex6.png</filename>
-            <filename>../../../../../../Desktop/assets/coin.png</filename>
-            <filename>../../../../../../Desktop/assets/bullet.png</filename>
-            <filename>../../../../../../Desktop/assets/pirateCoin.png</filename>
-            <filename>../../../../../../Desktop/assets/playBtn.png</filename>
-            <filename>../../../../../../Desktop/assets/retryBtn.png</filename>
+            <filename>assets/crow1.png</filename>
+            <filename>assets/crow2.png</filename>
+            <filename>assets/crow3.png</filename>
+            <filename>assets/crow4.png</filename>
+            <filename>assets/demon1.png</filename>
+            <filename>assets/demon2.png</filename>
+            <filename>assets/ex1.png</filename>
+            <filename>assets/ex2.png</filename>
+            <filename>assets/ex3.png</filename>
+            <filename>assets/ex4.png</filename>
+            <filename>assets/ex5.png</filename>
+            <filename>assets/ex6.png</filename>
+            <filename>assets/bullet.png</filename>
+            <filename>assets/coin.png</filename>
+            <filename>assets/pirateCoin.png</filename>
+            <filename>assets/playBtn.png</filename>
+            <filename>assets/retryBtn.png</filename>
+            <filename>assets/next.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

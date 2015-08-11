@@ -22,18 +22,21 @@
         }
         // Public Methods + + + + +
         public update() {
+            // lives counter
             this.livesLabel1.text = "Lives: " + this.lives;
             this.livesLabel1.x = 12;
             this.livesLabel1.y = 519;
             this.livesLabel2.text = "Lives: " + this.lives;
             this.livesLabel2.x = 10;
             this.livesLabel2.y = 518;
+            // score counter
             this.scoreLabel1.text = "Score: " + this.score; 
             this.scoreLabel1.x = 202;
             this.scoreLabel1.y = 519;
             this.scoreLabel2.text = "Score: " + this.score;  
             this.scoreLabel2.x = 200;
             this.scoreLabel2.y = 518;
+            // 1up counter
             if (this.cnt == 15) {
                 this.cnt = 0;
                 this.lives++;

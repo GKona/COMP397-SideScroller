@@ -16,10 +16,10 @@
 
     export function gameOver() {
         createjs.Sound.play("gameOverS", { "loop": -1, "volume": 0.4 });
-        var gameOverLabel: objects.Label;
-        var finalScoreLabel: objects.Label;
-        var finalScore: objects.Label;
-
+        //var gameOverLabel: objects.Label;
+        //var finalScoreLabel: objects.Label;
+        //var finalScore: objects.Label;
+        scoreboard.finalScore = scoreboard.score;
         // declare new game containter
         game = new createjs.Container();
         var gameOverLabel1 = new createjs.Text("GAME OVER!", "80px rockwell", "#4E0153");
@@ -62,7 +62,7 @@
         game.addChild(finalScore2);
 
         // display try again button
-        tryAgain = new objects.Button(800, 400, "retryBtn");
+        tryAgain = new objects.Button(800, 400, "playBtn");
         game.addChild(tryAgain);
         tryAgain.addEventListener("click", tryAgainClicked);
         

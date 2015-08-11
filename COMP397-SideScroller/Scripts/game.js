@@ -24,6 +24,7 @@
 /// <reference path="states/play2.ts" />
 /// <reference path="states/play3.ts" />
 /// <reference path="states/menu.ts" />
+/// <reference path="states/levelbuffer.ts" />
 /// <reference path="states/gameover.ts" />
 // Game Framework Variables
 var canvas = document.getElementById("canvas");
@@ -46,6 +47,7 @@ var bulletM;
 var tryAgain;
 var playButton;
 // State manager
+var prevState;
 var currentState;
 var currentStateFunction;
 // Preloader Function
@@ -113,6 +115,11 @@ function changeState(state) {
             // instantiate play screen
             currentStateFunction = states.playState3;
             states.play3();
+            break;
+        case constants.LEVEL_BUFFER:
+            // instantiate game over screen
+            currentStateFunction = states.levelBufferState;
+            states.levelBuffer();
             break;
         case constants.GAME_OVER_STATE:
             // instantiate game over screen

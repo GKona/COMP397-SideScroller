@@ -1,17 +1,15 @@
-﻿module states {
-    export function playState1(gameObject: objects.GameObject) {
+var states;
+(function (states) {
+    function playState2() {
         horizon.update();
         jetCrow.update();
         gold.update();
-
-        for (var demonStrt = 0; demonStrt < constants.CLOUD_NUM; demonStrt++) {
-            demonStrts[demonStrt].update();         
+        for (var demonDiag = 0; demonDiag < constants.CLOUD_NUM; demonDiag++) {
+            demonDiags[demonDiag].update();
         }
-        
         bulletM.update();
         collision.update();
         scoreboard.update();
-        
         if (scoreboard.lives <= 0) {
             stage.removeChild(game);
             jetCrow.destroy();
@@ -20,19 +18,18 @@
             currentState = constants.GAME_OVER_STATE;
             changeState(currentState);
         }
-        
         if (scoreboard.score >= 200) {
             constants.FINAL_SCORE += scoreboard.score;
             stage.removeChild(game);
             jetCrow.destroy();
             game.removeAllChildren();
             game.removeAllEventListeners();
-            prevState = constants.PLAY1_STATE;
+            prevState = constants.PLAY2_STATE;
             currentState = constants.LEVEL_BUFFER;
             changeState(currentState);
         }
-        
     }
+    states.playState2 = playState2;
     function mouseDown() {
         bulletM.firing = true;
         setTimeout(function (e) {
@@ -41,11 +38,11 @@
     }
     function mouseUp() {
         setTimeout(function (e) {
-        bulletM.firing = false;
+            bulletM.firing = false;
         }, 40);
     }
-    export function play1() {
-        constants.FINAL_SCORE = 0;
+    function play2() {
+        constants.CLOUD_NUM = 10;
         // Instantiate new game container
         game = new createjs.Container();
         // remove cursor
@@ -53,7 +50,7 @@
         //add music
         createjs.Sound.play("playS", { "loop": -1, "volume": 0.1 });
         // Add horizon object to stage
-        horizon = new objects.Horizon(assets.loader.getResult("cityB"));
+        horizon = new objects.Horizon(assets.loader.getResult("cityP"));
         game.addChild(horizon);
         // Add gold object to stage
         gold = new objects.Gold("coin");
@@ -61,10 +58,10 @@
         // Add jetCrow object to stage
         jetCrow = new objects.JetCrow("crow");
         game.addChild(jetCrow);
-        // Add demonStrt objects to stage
-        for (var demonStrt = 0; demonStrt < constants.CLOUD_NUM; demonStrt++) {
-            demonStrts[demonStrt] = new objects.DemonStrt("demon");
-            game.addChild(demonStrts[demonStrt]);
+        // Add demonDiag objects to stage
+        for (var demonDiag = 0; demonDiag < constants.CLOUD_NUM; demonDiag++) {
+            demonDiags[demonDiag] = new objects.DemonDiag("demon");
+            game.addChild(demonDiags[demonDiag]);
         }
         // add scoreboard
         scoreboard = new objects.ScoreBoard;
@@ -77,4 +74,6 @@
         // add game container to stage
         stage.addChild(game);
     }
-}
+    states.play2 = play2;
+})(states || (states = {}));
+//# sourceMappingURL=play2.js.map

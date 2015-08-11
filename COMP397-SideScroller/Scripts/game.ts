@@ -28,6 +28,7 @@
 /// <reference path="states/play2.ts" />
 /// <reference path="states/play3.ts" />
 /// <reference path="states/menu.ts" />
+/// <reference path="states/levelbuffer.ts" />
 /// <reference path="states/gameover.ts" />
 
 // Game Framework Variables
@@ -55,6 +56,7 @@ var tryAgain: objects.Button;
 var playButton: objects.Button;
 
 // State manager
+var prevState: number;
 var currentState: number;
 var currentStateFunction;
 
@@ -87,7 +89,6 @@ function optimizeForMobile() {
         createjs.Touch.enable(stage);
     }
 }
-
 
 // function to setup stat counting
 function setupStats() {
@@ -133,6 +134,11 @@ function changeState(state: number): void {
             // instantiate play screen
             currentStateFunction = states.playState3;
             states.play3();
+            break;
+        case constants.LEVEL_BUFFER:
+            // instantiate game over screen
+            currentStateFunction = states.levelBufferState;
+            states.levelBuffer();
             break;
         case constants.GAME_OVER_STATE:
             // instantiate game over screen
