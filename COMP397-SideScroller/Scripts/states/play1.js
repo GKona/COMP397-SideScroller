@@ -18,6 +18,7 @@ var states;
             currentState = constants.GAME_OVER_STATE;
             changeState(currentState);
         }
+        /*
         if (scoreboard.score >= 200) {
             constants.FINAL_SCORE += scoreboard.score;
             stage.removeChild(game);
@@ -28,6 +29,7 @@ var states;
             currentState = constants.LEVEL_BUFFER;
             changeState(currentState);
         }
+        */
     }
     states.playState1 = playState1;
     function mouseDown() {
@@ -73,6 +75,29 @@ var states;
         game.addEventListener("pressup", mouseUp);
         // add game container to stage
         stage.addChild(game);
+        setTimeout(function (e) {
+            constants.FINAL_SCORE += scoreboard.score;
+            stage.removeChild(game);
+            jetCrow.destroy();
+            game.removeAllChildren();
+            game.removeAllEventListeners();
+            prevState = constants.PLAY1_STATE;
+            currentState = constants.LEVEL_BUFFER;
+            changeState(currentState);
+        }, 60000);
+        //180000
+        var minsInter = setInterval(function (e) {
+            scoreboard.mins--;
+            if (scoreboard.mins < 1) {
+                clearInterval(minsInter);
+            }
+        }, 1000);
+        var secsInter = setInterval(function (e) {
+            scoreboard.secs--;
+            if (scoreboard.mins > 0) {
+                clearInterval(secsInter);
+            }
+        }, 1000);
     }
     states.play1 = play1;
 })(states || (states = {}));
