@@ -10,32 +10,29 @@
         changeState(currentState);
     }
     export function menu() {
+        // add music
         createjs.Sound.play("menuS", { "loop": -1, "volume": 0.4 });
+        // add title label
         var gameNameLabel1 = new createjs.Text("Jet-Crow", "80px papyrus", "#5A004F");
         var gameNameLabel2 = new createjs.Text("Jet-Crow", "80px papyrus", "#053860");
-        // Declare new game container
+        // declare new game container
         game = new createjs.Container();
-
+        // add horizon object to stage
         horizon = new objects.Horizon(assets.loader.getResult("menuScrn"));
         game.addChild(horizon);
-        
-        // Show cursor
+        // hide cursor
         stage.cursor = "default";
-
-        // Display Game Title
+        // display game title
         gameNameLabel1.x = 50;
         gameNameLabel1.y = 0;
         game.addChild(gameNameLabel1)
         gameNameLabel2.x = 51;
         gameNameLabel2.y = 1;
         game.addChild(gameNameLabel2);
-
-        // Display Play Button
+        // display play button
         playButton = new objects.Button(800, 400, "playBtn");
         game.addChild(playButton);
         playButton.addEventListener("click", playButtonClicked);
-
         stage.addChild(game);
-
     }
 }

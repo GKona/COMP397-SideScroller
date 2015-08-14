@@ -20,8 +20,9 @@
             }
         }
         private reset(): void {
+            // resets horizon off screen
             this.y = 0;
-            this.x = 0; // resets horizon off screen
+            this.x = 0; 
         }
         // Public Methods + + + + +
         public update(): void {

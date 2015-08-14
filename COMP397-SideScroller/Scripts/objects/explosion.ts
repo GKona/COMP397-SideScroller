@@ -7,7 +7,6 @@ module objects {
             this.game = game;
             this.game.addChild(this);
         }
-
         remove() {
             this.game.removeChild(this);
         }

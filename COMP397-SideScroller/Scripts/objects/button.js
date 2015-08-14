@@ -19,14 +19,17 @@ var objects;
             this.y = y;
             this.setButtonListeners;
         }
+        // event listener
         Button.prototype.setButtonListeners = function () {
             this.cursor = 'pointer';
             this.on('rollover', this.onButtonOver);
             this.on('rollout', this.onButtonOut);
         };
+        // hover fade out
         Button.prototype.onButtonOver = function () {
             this.alpha = 0.8;
         };
+        // hover fade in
         Button.prototype.onButtonOut = function () {
             this.alpha = 1;
         };

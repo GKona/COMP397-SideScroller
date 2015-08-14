@@ -91,6 +91,7 @@
     <Content Include="assets\audio\menuS.wav" />
     <Content Include="assets\audio\oneUp.wav" />
     <Content Include="assets\audio\pickUp.wav" />
+    <Content Include="assets\audio\pirate.wav" />
     <Content Include="assets\audio\playS.wav" />
     <Content Include="assets\images\atlas.png" />
     <Content Include="assets\images\bg.png" />
@@ -174,6 +175,7 @@
     <TypeScriptCompile Include="Scripts\objects\label.ts" />
     <TypeScriptCompile Include="Scripts\objects\horizon.ts" />
     <TypeScriptCompile Include="Scripts\objects\jetCrow.ts" />
+    <TypeScriptCompile Include="Scripts\objects\pirateCoin.ts" />
     <TypeScriptCompile Include="Scripts\objects\scoreboard.ts" />
     <TypeScriptCompile Include="Scripts\states\levelBuffer.ts" />
     <TypeScriptCompile Include="Scripts\states\gameover.ts" />

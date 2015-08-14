@@ -19,6 +19,7 @@ var objects;
         }
         // Public Methods + + + + +
         JetCrow.prototype.update = function () {
+            // sets y position and stage boundaries
             if (stage.mouseY < 45) {
                 this.y = 45;
             }
@@ -28,6 +29,7 @@ var objects;
             else if (stage.mouseY > 45 && stage.mouseY < 470) {
                 this.y = stage.mouseY; // position jetCrow under mouse
             }
+            // sets x position and stage boundaries
             if (stage.mouseX < 65) {
                 this.x = 65;
             }

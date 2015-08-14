@@ -12,6 +12,7 @@
 /// <reference path="objects/horizon.ts" />
 /// <reference path="objects/jetCrow.ts" />
 /// <reference path="objects/gold.ts" />
+/// <reference path="objects/piratecoin.ts" />
 /// <reference path="objects/demonDiag.ts" />
 /// <reference path="objects/demonStrt.ts" />
 /// <reference path="objects/demonWave.ts" />
@@ -41,6 +42,7 @@ var game: createjs.Container;
 var horizon: objects.Horizon;
 var jetCrow: objects.JetCrow;
 var gold: objects.Gold;
+var pirate: objects.PirateCoin;
 var demonDiags: objects.DemonDiag[] = [];  
 var demonStrts: objects.DemonStrt[] = [];
 var demonWaves: objects.DemonWave[] = [];
@@ -83,7 +85,6 @@ function init() {
 }
 
 // Add touch support for mobile devices
-
 function optimizeForMobile() {
     if (createjs.Touch.isSupported()) {
         createjs.Touch.enable(stage);
@@ -94,12 +95,10 @@ function optimizeForMobile() {
 function setupStats() {
     stats = new Stats();
     stats.setMode(0); // set to fps
-
     // align bottom-right
     stats.domElement.style.position = 'absolute';
     stats.domElement.style.left = '1010px';
     stats.domElement.style.top = '8px';
-
     //document.body.appendChild(stats.domElement);
 }
 
@@ -108,7 +107,6 @@ function gameLoop() {
     stats.begin(); // Begin measuring
     currentStateFunction();
     stage.update();
-
     stats.end(); // end measuring
 }
 

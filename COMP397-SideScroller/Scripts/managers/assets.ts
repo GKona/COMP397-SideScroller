@@ -17,14 +17,14 @@
             { id: "playS", src: "assets/audio/playS.wav" },
             { id: "engine", src: "assets/audio/engine.wav" },
             { id: "damage", src: "assets/audio/damage.wav" },
-            { id: "bill", src: "assets/audio/bill.wav" }
+            { id: "bill", src: "assets/audio/bill.wav" },
+            { id: "pirate", src: "assets/audio/pirate.wav" }
         ];
 
         private data = {
             "images": [
                 "assets/images/atlas.png"
             ],
-
             "frames": [
                 [2, 2, 24, 25, 0, 0, 0],
                 [28, 2, 48, 53, 0, -1, -1],
@@ -45,7 +45,6 @@
                 [1438, 2, 200, 200, 0, 0, 0],
                 [1640, 2, 211, 217, 0, -5, -3]
             ],
-            
             "animations": {
                 "bullet": [0],
                 "coin": [1],
@@ -79,7 +78,6 @@
                     speed: 0.3
                 }
             }
-
         }
         
         // Constructor + + + + +

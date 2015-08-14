@@ -1,10 +1,6 @@
 var states;
 (function (states) {
     function levelBufferState() {
-        // displays background
-        //horizon.update();
-        //jetCrow.update();
-        //gold.update();
     }
     states.levelBufferState = levelBufferState;
     function nextClicked(event) {
@@ -12,6 +8,7 @@ var states;
         createjs.Sound.stop();
         game.removeAllChildren();
         game.removeAllEventListeners();
+        // reads previous state and sets next
         if (prevState == constants.PLAY1_STATE) {
             currentState = constants.PLAY2_STATE;
         }
@@ -25,15 +22,14 @@ var states;
     }
     states.nextClicked = nextClicked;
     function levelBuffer() {
+        // add music
         createjs.Sound.play("gameOverS", { "loop": -1, "volume": 0.4 });
-        //var gameOverLabel: objects.Label;
-        //var finalScoreLabel: objects.Label;
-        //var finalScore: objects.Label;
         // declare new game containter
         game = new createjs.Container();
-        // Background
+        // add horizon object to stage
         horizon = new objects.Horizon(assets.loader.getResult("gameOverScrn"));
         game.addChild(horizon);
+        // sets titles and stats
         if (prevState == constants.PLAY1_STATE) {
             var titleLabel1 = new createjs.Text("LEVEL 1 COMPLETE!", "90px rockwell", "#4E0153");
             var titleLabel2 = new createjs.Text("LEVEL 1 COMPLETE!", "90px rockwell", "#3B1D8D");
@@ -62,6 +58,7 @@ var states;
             score2.x = 220;
             score2.y = 300;
             game.addChild(score2);
+            // display try again button
             tryAgain = new objects.Button(800, 400, "nextBtn");
             game.addChild(tryAgain);
         }
@@ -114,6 +111,7 @@ var states;
             tScore2.x = 220;
             tScore2.y = 360;
             game.addChild(tScore2);
+            // display try again button
             tryAgain = new objects.Button(800, 400, "nextBtn");
             game.addChild(tryAgain);
         }
@@ -145,14 +143,13 @@ var states;
             fScore2.x = 220;
             fScore2.y = 280;
             game.addChild(fScore2);
+            // display try again button
             tryAgain = new objects.Button(800, 400, "playBtn");
             game.addChild(tryAgain);
         }
         // show cursor
         stage.cursor = "default";
-        // display try again button
-        //tryAgain = new objects.Button(800, 400, "nextBtn");
-        //game.addChild(tryAgain);
+        // add mouse event listeners
         tryAgain.addEventListener("click", nextClicked);
         stage.addChild(game);
     }

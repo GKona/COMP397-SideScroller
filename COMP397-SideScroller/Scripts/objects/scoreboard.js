@@ -71,7 +71,8 @@ var objects;
                 this.lives++;
                 createjs.Sound.play("oneUp", { "volume": 0.4 });
             }
-            if (this.multCnt == 2) {
+            // multiplier counter
+            if (this.multCnt == 10) {
                 this.multCnt = 0;
                 this.mult++;
             }

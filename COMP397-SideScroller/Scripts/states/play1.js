@@ -4,12 +4,15 @@ var states;
         horizon.update();
         jetCrow.update();
         gold.update();
-        for (var demonStrt = 0; demonStrt < constants.CLOUD_NUM; demonStrt++) {
-            demonStrts[demonStrt].update();
-        }
+        pirate.update();
         bulletM.update();
         collision.update();
         scoreboard.update();
+        // updates every instance of enemy array
+        for (var demonStrt = 0; demonStrt < constants.CLOUD_NUM; demonStrt++) {
+            demonStrts[demonStrt].update();
+        }
+        // gameover when lives reach 0
         if (scoreboard.lives <= 0) {
             stage.removeChild(game);
             jetCrow.destroy();
@@ -18,50 +21,45 @@ var states;
             currentState = constants.GAME_OVER_STATE;
             changeState(currentState);
         }
-        /*
-        if (scoreboard.score >= 200) {
-            constants.FINAL_SCORE += scoreboard.score;
-            stage.removeChild(game);
-            jetCrow.destroy();
-            game.removeAllChildren();
-            game.removeAllEventListeners();
-            prevState = constants.PLAY1_STATE;
-            currentState = constants.LEVEL_BUFFER;
-            changeState(currentState);
-        }
-        */
     }
     states.playState1 = playState1;
+    // fires bullet on button press
     function mouseDown() {
         bulletM.firing = true;
         setTimeout(function (e) {
             bulletM.firing = false;
         }, 200);
     }
+    // stops firing on button release
+    /*
     function mouseUp() {
         setTimeout(function (e) {
-            bulletM.firing = false;
+        bulletM.firing = false;
         }, 40);
     }
+    */
     function play1() {
+        // resets final score variable
         constants.FINAL_SCORE = 0;
-        //scoreboard.mult = 1;
-        // Instantiate new game container
+        // instantiate new game container
         game = new createjs.Container();
-        // remove cursor
+        // hide cursor
         stage.cursor = "none";
-        //add music
+        // add music
         createjs.Sound.play("playS", { "loop": -1, "volume": 0.1 });
-        // Add horizon object to stage
+        // add horizon object to stage
         horizon = new objects.Horizon(assets.loader.getResult("cityB"));
         game.addChild(horizon);
-        // Add gold object to stage
+        // add gold object to stage
         gold = new objects.Gold("coin");
         game.addChild(gold);
-        // Add jetCrow object to stage
+        // add pirate object to stage
+        pirate = new objects.PirateCoin("pirateCoin");
+        game.addChild(pirate);
+        // add jetCrow object to stage
         jetCrow = new objects.JetCrow("crow");
         game.addChild(jetCrow);
-        // Add demonStrt objects to stage
+        // add demonStrt object to stage
         for (var demonStrt = 0; demonStrt < constants.CLOUD_NUM; demonStrt++) {
             demonStrts[demonStrt] = new objects.DemonStrt("demon");
             game.addChild(demonStrts[demonStrt]);
@@ -71,11 +69,13 @@ var states;
         // add bullet manager
         bulletM = new managers.BulletM(jetCrow, game);
         // add collision manager
-        collision = new managers.Collision(jetCrow, gold, demonDiags, demonStrts, demonWaves, scoreboard, game, bulletM.bullets);
+        collision = new managers.Collision(jetCrow, gold, pirate, demonDiags, demonStrts, demonWaves, scoreboard, game, bulletM.bullets);
+        // add mouse event listeners
         game.addEventListener("mousedown", mouseDown);
-        game.addEventListener("pressup", mouseUp);
+        //game.addEventListener("pressup", mouseUp);
         // add game container to stage
         stage.addChild(game);
+        // level timer 
         setTimeout(function (e) {
             constants.FINAL_SCORE += scoreboard.score;
             stage.removeChild(game);
@@ -85,14 +85,15 @@ var states;
             prevState = constants.PLAY1_STATE;
             currentState = constants.LEVEL_BUFFER;
             changeState(currentState);
-        }, 5000);
-        //60000
+        }, 60000);
+        // minute counter
         var minsInter = setInterval(function (e) {
             scoreboard.mins--;
             if (scoreboard.mins < 1) {
                 clearInterval(minsInter);
             }
         }, 1000);
+        // second counter
         var secsInter = setInterval(function (e) {
             scoreboard.secs--;
             if (scoreboard.mins > 0) {

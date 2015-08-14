@@ -24,14 +24,15 @@ var objects;
                 this.reset();
             }
         };
+        // Public Methods + + + + +
         Gold.prototype.reset = function () {
             this.x = Math.floor(Math.random() * 500) + 1500; // starts gold at random location
             this.y = Math.floor(Math.random() * 510) + 20; // starts gold off stage
+            // reruns if 0 value
             do {
                 this.dx = Math.floor(Math.random() * 2) + 8;
             } while (this.dx == 0);
         };
-        // Public Methods + + + + +
         Gold.prototype.update = function () {
             this.x -= this.dx; // moves the gold down the stage
             this.checkBounds();

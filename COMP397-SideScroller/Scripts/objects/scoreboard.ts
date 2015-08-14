@@ -66,21 +66,20 @@
             this.timerLabel2.x = 400;
             this.timerLabel2.y = 518;
             // multiplier
-            
             this.mult1.text = "Multiplier: X" + this.mult;
             this.mult1.x = 652;
             this.mult1.y = 519;
             this.mult2.text = "Multiplier: X" + this.mult;
             this.mult2.x = 650;
             this.mult2.y = 518;
-            
             // 1up counter
             if (this.cnt == 15) {
                 this.cnt = 0;
                 this.lives++;
                 createjs.Sound.play("oneUp", { "volume": 0.4 });
             }
-            if (this.multCnt == 2) {
+            // multiplier counter
+            if (this.multCnt == 10) {
                 this.multCnt = 0;
                 this.mult++;
             }

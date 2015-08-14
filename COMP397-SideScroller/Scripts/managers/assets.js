@@ -17,7 +17,8 @@ var managers;
                 { id: "playS", src: "assets/audio/playS.wav" },
                 { id: "engine", src: "assets/audio/engine.wav" },
                 { id: "damage", src: "assets/audio/damage.wav" },
-                { id: "bill", src: "assets/audio/bill.wav" }
+                { id: "bill", src: "assets/audio/bill.wav" },
+                { id: "pirate", src: "assets/audio/pirate.wav" }
             ];
             this.data = {
                 "images": [

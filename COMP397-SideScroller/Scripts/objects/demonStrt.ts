@@ -10,25 +10,21 @@
         }
         // Private Methods + + + + +
         private checkBounds(): void {
-            // check if demonStrt has left the screen
+            // check and reset if enemy has left the screen
             if (this.x < 0) {
                 this.reset();
             }
         }
+        // Public Methods + + + + +
         public reset(): void {
-            this.y = Math.floor(Math.random() * 510) + 20; // starts demonStrt at random location
-            this.x = Math.floor(Math.random() * 300) + 1050; // starts demonStrt off stage
+            this.y = Math.floor(Math.random() * 510) + 20; // starts enemy at random location
+            this.x = Math.floor(Math.random() * 300) + 1050; // starts enemy off stage
+            // reruns if 0 value
             do { this.dx = Math.floor(Math.random() * 2) + 8 }
             while (this.dx == 0);
-            //this.dx = Math.floor(Math.random() * 10) + 5;
-            //do { this.dy = Math.floor(Math.random() * 4) - 2 }
-            //while (this.dy == 0);
-            //this.dy = Math.floor(Math.random() * 4) - 2;
         }
-        // Public Methods + + + + +
         public update(): void {
-            this.x -= this.dx; // moves the demon left through the stage
-            //this.y -= this.dy; // moves the demon up and down
+            this.x -= this.dx; // moves the enemy left through the stage
             this.checkBounds();
         }
     }

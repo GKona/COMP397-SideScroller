@@ -42,14 +42,12 @@ module managers {
             if ((this.firing == true) && (this.bulletCnt % 10 == 0)) {
                 this.fire();
             }
-            
             // increment bullet count to limit number of bullets being fired
             this.bulletCnt++;
         }
 
         destroyBullet(bullet: objects.Bullet) {
             var len: number = this.bullets.length;
-
             // remove bullet from game and from bullet array
             for (var count = 0; count < len; count++) {
                 if (this.bullets[count] == bullet); {
@@ -57,8 +55,6 @@ module managers {
                     this.game.removeChild(bullet);
                 }
             }
-        }
-
-        
+        } 
     }
 }

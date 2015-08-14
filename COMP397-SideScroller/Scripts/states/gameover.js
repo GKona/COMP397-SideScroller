@@ -1,10 +1,6 @@
 var states;
 (function (states) {
     function gameOverState() {
-        // displays background
-        //horizon.update();
-        //jetCrow.update();
-        //gold.update();
     }
     states.gameOverState = gameOverState;
     function tryAgainClicked(event) {
@@ -17,21 +13,20 @@ var states;
     }
     states.tryAgainClicked = tryAgainClicked;
     function gameOver() {
+        // add music
         createjs.Sound.play("gameOverS", { "loop": -1, "volume": 0.4 });
-        //var gameOverLabel: objects.Label;
-        //var finalScoreLabel: objects.Label;
-        //var finalScore: objects.Label;
+        // sets final score
         scoreboard.finalScore = scoreboard.score;
         // declare new game containter
         game = new createjs.Container();
+        // add horizon object to stage
         horizon = new objects.Horizon(assets.loader.getResult("gameOverScrn"));
         game.addChild(horizon);
+        // sets title and stats
         var gameOverLabel1 = new createjs.Text("GAME OVER!", "80px rockwell", "#4E0153");
         var gameOverLabel2 = new createjs.Text("GAME OVER!", "80px rockwell", "#3B1D8D");
         var finalScoreLabel1 = new createjs.Text("FINAL SCORE!", "60px rockwell", "#4E0153");
         var finalScoreLabel2 = new createjs.Text("FINAL SCORE!", "60px rockwell", "#3B1D8D");
-        //var finalScore1 = new createjs.Text(scoreboard.score.toString(), "150px Brush Script MT", "#D22A07");
-        //var finalScore2 = new createjs.Text(scoreboard.score.toString(), "150px Brush Script MT", "#D2B007");
         var finalScore1 = new createjs.Text(constants.FINAL_SCORE.toString(), "150px Brush Script MT", "#D22A07");
         var finalScore2 = new createjs.Text(constants.FINAL_SCORE.toString(), "150px Brush Script MT", "#D2B007");
         // show cursor
@@ -51,10 +46,10 @@ var states;
         finalScoreLabel2.y = 175;
         game.addChild(finalScoreLabel2);
         // display final score
-        finalScore1.x = 264;
+        finalScore1.x = 244;
         finalScore1.y = 253;
         game.addChild(finalScore1);
-        finalScore2.x = 260;
+        finalScore2.x = 240;
         finalScore2.y = 250;
         game.addChild(finalScore2);
         // display try again button

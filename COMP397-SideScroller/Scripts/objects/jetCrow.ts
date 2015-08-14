@@ -11,6 +11,7 @@
         }
         // Public Methods + + + + +
         public update(): void {
+            // sets y position and stage boundaries
             if (stage.mouseY < 45) {
                 this.y = 45;
             }
@@ -20,7 +21,7 @@
             else if (stage.mouseY > 45 && stage.mouseY < 470) {
                 this.y = stage.mouseY; // position jetCrow under mouse
             }
-
+            // sets x position and stage boundaries
             if (stage.mouseX < 65) {
                 this.x = 65;
             }
@@ -30,8 +31,6 @@
             else if (stage.mouseX > 65 && stage.mouseX < 900) {
                 this.x = stage.mouseX; // position jetCrow under mouse
             }
-
-
         }
         public destroy() {
             // remove sound and sprite

@@ -10,6 +10,7 @@
 /// <reference path="objects/horizon.ts" />
 /// <reference path="objects/jetCrow.ts" />
 /// <reference path="objects/gold.ts" />
+/// <reference path="objects/piratecoin.ts" />
 /// <reference path="objects/demonDiag.ts" />
 /// <reference path="objects/demonStrt.ts" />
 /// <reference path="objects/demonWave.ts" />
@@ -35,6 +36,7 @@ var game;
 var horizon;
 var jetCrow;
 var gold;
+var pirate;
 var demonDiags = [];
 var demonStrts = [];
 var demonWaves = [];

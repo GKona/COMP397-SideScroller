@@ -16,13 +16,14 @@
                 this.reset();
             }
         }
+        // Public Methods + + + + +
         public reset(): void {
             this.x = Math.floor(Math.random() * 500) + 1500; // starts gold at random location
             this.y = Math.floor(Math.random() * 510) + 20; // starts gold off stage
+            // reruns if 0 value
             do { this.dx = Math.floor(Math.random() * 2) + 8 }
             while (this.dx == 0);
         }
-        // Public Methods + + + + +
         public update(): void {
             this.x -= this.dx; // moves the gold down the stage
             this.checkBounds();
