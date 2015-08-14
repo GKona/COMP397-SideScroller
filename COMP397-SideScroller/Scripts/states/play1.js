@@ -45,6 +45,7 @@ var states;
     }
     function play1() {
         constants.FINAL_SCORE = 0;
+        //scoreboard.mult = 1;
         // Instantiate new game container
         game = new createjs.Container();
         // remove cursor
@@ -84,8 +85,8 @@ var states;
             prevState = constants.PLAY1_STATE;
             currentState = constants.LEVEL_BUFFER;
             changeState(currentState);
-        }, 60000);
-        //180000
+        }, 5000);
+        //60000
         var minsInter = setInterval(function (e) {
             scoreboard.mins--;
             if (scoreboard.mins < 1) {

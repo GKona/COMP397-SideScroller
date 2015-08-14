@@ -12,7 +12,7 @@ var states;
         createjs.Sound.stop();
         game.removeAllChildren();
         game.removeAllEventListeners();
-        currentState = constants.PLAY1_STATE;
+        currentState = constants.MENU_STATE;
         changeState(currentState);
     }
     states.tryAgainClicked = tryAgainClicked;
@@ -24,16 +24,16 @@ var states;
         scoreboard.finalScore = scoreboard.score;
         // declare new game containter
         game = new createjs.Container();
+        horizon = new objects.Horizon(assets.loader.getResult("gameOverScrn"));
+        game.addChild(horizon);
         var gameOverLabel1 = new createjs.Text("GAME OVER!", "80px rockwell", "#4E0153");
         var gameOverLabel2 = new createjs.Text("GAME OVER!", "80px rockwell", "#3B1D8D");
         var finalScoreLabel1 = new createjs.Text("FINAL SCORE!", "60px rockwell", "#4E0153");
         var finalScoreLabel2 = new createjs.Text("FINAL SCORE!", "60px rockwell", "#3B1D8D");
         //var finalScore1 = new createjs.Text(scoreboard.score.toString(), "150px Brush Script MT", "#D22A07");
         //var finalScore2 = new createjs.Text(scoreboard.score.toString(), "150px Brush Script MT", "#D2B007");
-        var finalScore1 = new createjs.Text(scoreboard.finalScore.toString(), "150px Brush Script MT", "#D22A07");
-        var finalScore2 = new createjs.Text(scoreboard.finalScore.toString(), "150px Brush Script MT", "#D2B007");
-        horizon = new objects.Horizon(assets.loader.getResult("gameOverScrn"));
-        game.addChild(horizon);
+        var finalScore1 = new createjs.Text(constants.FINAL_SCORE.toString(), "150px Brush Script MT", "#D22A07");
+        var finalScore2 = new createjs.Text(constants.FINAL_SCORE.toString(), "150px Brush Script MT", "#D2B007");
         // show cursor
         stage.cursor = "default";
         // display game over

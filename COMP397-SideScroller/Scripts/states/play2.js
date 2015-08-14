@@ -45,6 +45,7 @@ var states;
     }
     function play2() {
         constants.CLOUD_NUM = 10;
+        scoreboard.mult = 1;
         // Instantiate new game container
         game = new createjs.Container();
         // remove cursor
@@ -81,11 +82,11 @@ var states;
             jetCrow.destroy();
             game.removeAllChildren();
             game.removeAllEventListeners();
-            prevState = constants.PLAY1_STATE;
+            prevState = constants.PLAY2_STATE;
             currentState = constants.LEVEL_BUFFER;
             changeState(currentState);
-        }, 60000);
-        //180000
+        }, 5000);
+        //60000
         var minsInter = setInterval(function (e) {
             scoreboard.mins--;
             if (scoreboard.mins < 1) {

@@ -5,14 +5,18 @@
         public finalScore: number = 0;
         public lives: number = constants.CROW_LIVES;
         public cnt: number = 0;
+        public multCnt: number = 0;
         public mins: number = 1;
         public secs: number = 60;
+        public mult: number = 1;
         private scoreLabel1: createjs.Text;
         private scoreLabel2: createjs.Text;
         private livesLabel1: createjs.Text;
         private livesLabel2: createjs.Text;
         private timerLabel1: createjs.Text;
         private timerLabel2: createjs.Text;
+        private mult1: createjs.Text;
+        private mult2: createjs.Text;
         // Constructor + + + + +
         constructor() {
             this.livesLabel1 = new createjs.Text("Lives:", "28px Consolas", "#042036");
@@ -21,12 +25,16 @@
             this.scoreLabel2 = new createjs.Text("Score:", "28px Consolas", "#708DA4");
             this.timerLabel1 = new createjs.Text("Time:", "28px Consolas", "#042036");
             this.timerLabel2 = new createjs.Text("Time:", "28px Consolas", "#708DA4");
+            this.mult1 = new createjs.Text("Multiplier:", "28px Consolas", "#042036");
+            this.mult2 = new createjs.Text("Multiplier:", "28px Consolas", "#708DA4");
             game.addChild(this.livesLabel1);
             game.addChild(this.livesLabel2);
             game.addChild(this.scoreLabel1);
             game.addChild(this.scoreLabel2);
             game.addChild(this.timerLabel1);
             game.addChild(this.timerLabel2);
+            game.addChild(this.mult1);
+            game.addChild(this.mult2);
         }
         // Public Methods + + + + +
         public update() {
@@ -57,13 +65,24 @@
             this.timerLabel1.y = 519;
             this.timerLabel2.x = 400;
             this.timerLabel2.y = 518;
-
-            // 1up counter
+            // multiplier
             
+            this.mult1.text = "Multiplier: X" + this.mult;
+            this.mult1.x = 652;
+            this.mult1.y = 519;
+            this.mult2.text = "Multiplier: X" + this.mult;
+            this.mult2.x = 650;
+            this.mult2.y = 518;
+            
+            // 1up counter
             if (this.cnt == 15) {
                 this.cnt = 0;
                 this.lives++;
                 createjs.Sound.play("oneUp", { "volume": 0.4 });
+            }
+            if (this.multCnt == 2) {
+                this.multCnt = 0;
+                this.mult++;
             }
         }  
     }

@@ -30,6 +30,9 @@ var managers;
                     explosion.y = demon.y;
                     explosion.on("animationend", function (e) { explosion.remove(); });
                     scoreboard.lives--;
+                    scoreboard.mult = 1;
+                    scoreboard.multCnt = 0;
+                    ;
                     demon.reset();
                 }
                 demon.isColliding = true;
@@ -53,6 +56,9 @@ var managers;
                     explosion.y = demon.y;
                     explosion.on("animationend", function (e) { explosion.remove(); });
                     scoreboard.lives--;
+                    scoreboard.mult = 1;
+                    scoreboard.multCnt = 0;
+                    ;
                     demon.reset();
                 }
                 demon.isColliding = true;
@@ -76,6 +82,9 @@ var managers;
                     explosion.y = demon.y;
                     explosion.on("animationend", function (e) { explosion.remove(); });
                     scoreboard.lives--;
+                    scoreboard.mult = 1;
+                    scoreboard.multCnt = 0;
+                    ;
                     demon.reset();
                 }
                 demon.isColliding = true;
@@ -119,7 +128,8 @@ var managers;
                     explosion.y = demon.y;
                     explosion.on("animationend", function (e) { explosion.remove(); });
                     demon.reset();
-                    scoreboard.score += 10;
+                    scoreboard.score += 10 * scoreboard.mult;
+                    scoreboard.multCnt++;
                     bulletM.destroyBullet(bullet);
                 }
                 demon.isColliding = true;
@@ -143,7 +153,8 @@ var managers;
                     explosion.y = demon.y;
                     explosion.on("animationend", function (e) { explosion.remove(); });
                     demon.reset();
-                    scoreboard.score += 10;
+                    scoreboard.score += 10 * scoreboard.mult;
+                    scoreboard.multCnt++;
                     bulletM.destroyBullet(bullet);
                 }
                 demon.isColliding = true;
@@ -167,7 +178,8 @@ var managers;
                     explosion.y = demon.y;
                     explosion.on("animationend", function (e) { explosion.remove(); });
                     demon.reset();
-                    scoreboard.score += 10;
+                    scoreboard.score += 10 * scoreboard.mult;
+                    scoreboard.multCnt++;
                     bulletM.destroyBullet(bullet);
                 }
                 demon.isColliding = true;
